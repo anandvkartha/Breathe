@@ -33,7 +33,7 @@ const PRESETS = {
 const state = {
     preset: 'Micro-Break',
     sound: 'Ocean',
-    volume: 25,
+    volume: 30,
     countdown: 8,
     stages: Array.from(PRESETS['Micro-Break'].map(s => ({ ...s }))),
     sessionActive: false,
@@ -42,17 +42,14 @@ const state = {
 // DOM Elements
 const DOM = {
     landingView: document.getElementById('landing-view'),
-    tabMoodToggle: document.getElementById('tab-mood-toggle'),
-    tabPresetsToggle: document.getElementById('tab-presets-toggle'),
     tabMood: document.getElementById('tab-mood'),
-    tabPresets: document.getElementById('tab-presets'),
     postSession: document.getElementById('post-session'),
     postBetterBtn: document.getElementById('post-better-btn'),
     postSameBtn: document.getElementById('post-same-btn'),
     earlyFinishBtn: document.getElementById('early-finish-btn'),
     activeSession: document.getElementById('active-session'),
     stopBtn: document.getElementById('stop-session-btn'),
-    presetControls: document.getElementById('preset-controls'),
+
     volumeControls: document.getElementById('volume-controls'),
     breathingCircle: document.getElementById('breathing-circle'),
     eyeDot: document.getElementById('eye-dot'),
@@ -149,53 +146,27 @@ const setupChipGroup = (container, activeValue, onChange) => {
     });
 };
 
-setupChipGroup(DOM.presetControls, state.preset, (val) => {
-    state.preset = val;
-    state.stages = Array.from(PRESETS[val].map(s => ({ ...s })));
-    const remInfo = document.getElementById('rem-info');
-    const upgazeInfo = document.getElementById('upgaze-info');
-    const downgazeInfo = document.getElementById('downgaze-info');
-
-    if (remInfo) remInfo.style.display = val === 'Rapid Eye Movement' ? 'block' : 'none';
-    if (upgazeInfo) upgazeInfo.style.display = val === 'Creative Upgaze' ? 'block' : 'none';
-    if (downgazeInfo) downgazeInfo.style.display = val === 'Introspective Downgaze' ? 'block' : 'none';
-});
 setupChipGroup(DOM.volumeControls, state.volume === 0 ? 'Off' : state.volume.toString(), (val) => {
     state.volume = val === 'Off' ? 0 : parseInt(val);
 });
-
-// Tab Switching Logic
-if (DOM.tabMoodToggle && DOM.tabPresetsToggle) {
-    DOM.tabMoodToggle.addEventListener('click', () => {
-        DOM.tabMoodToggle.classList.add('active');
-        DOM.tabPresetsToggle.classList.remove('active');
-        DOM.tabMood.classList.add('active');
-        DOM.tabPresets.classList.remove('active');
-    });
-
-    DOM.tabPresetsToggle.addEventListener('click', () => {
-        DOM.tabPresetsToggle.classList.add('active');
-        DOM.tabMoodToggle.classList.remove('active');
-        DOM.tabPresets.classList.add('active');
-        DOM.tabMood.classList.remove('active');
-    });
-}
 
 // Mood Selector Routing
 document.querySelectorAll('#tab-mood .mood-card').forEach(card => {
     card.addEventListener('click', (e) => {
         const selectedPreset = card.dataset.preset;
-        const presetButton = Array.from(DOM.presetControls.querySelectorAll('.chip, .mood-card'))
-            .find(b => b.dataset.preset === selectedPreset || b.textContent.trim() === selectedPreset);
-        if (presetButton) presetButton.click();
-        else {
-            state.preset = selectedPreset;
-            state.stages = Array.from(PRESETS[state.preset].map(s => ({ ...s })));
-            
-            document.querySelectorAll('#tab-mood .mood-card').forEach(c => {
-                c.classList.toggle('active', c.dataset.preset === state.preset);
-            });
-        }
+        state.preset = selectedPreset;
+        state.stages = Array.from(PRESETS[state.preset].map(s => ({ ...s })));
+        
+        document.querySelectorAll('#tab-mood .mood-card').forEach(c => {
+            c.classList.toggle('active', c.dataset.preset === state.preset);
+        });
+
+        const remInfo = document.getElementById('rem-info');
+        const upgazeInfo = document.getElementById('upgaze-info');
+        const downgazeInfo = document.getElementById('downgaze-info');
+        if (remInfo) remInfo.style.display = state.preset.includes('Rapid Eye Movement') ? 'block' : 'none';
+        if (upgazeInfo) upgazeInfo.style.display = state.preset.includes('Upgaze') ? 'block' : 'none';
+        if (downgazeInfo) downgazeInfo.style.display = state.preset.includes('Downgaze') ? 'block' : 'none';
 
         if (e.target.closest('.play-arrow') && typeof beginSession === 'function') {
             DOM.landingView.classList.remove('active');
@@ -205,13 +176,8 @@ document.querySelectorAll('#tab-mood .mood-card').forEach(card => {
 
     card.addEventListener('dblclick', () => {
         const selectedPreset = card.dataset.preset;
-        const presetButton = Array.from(DOM.presetControls.querySelectorAll('.chip, .mood-card'))
-            .find(b => b.dataset.preset === selectedPreset || b.textContent.trim() === selectedPreset);
-        if (presetButton) presetButton.click();
-        else {
-            state.preset = selectedPreset;
-            state.stages = Array.from(PRESETS[state.preset].map(s => ({ ...s })));
-        }
+        state.preset = selectedPreset;
+        state.stages = Array.from(PRESETS[state.preset].map(s => ({ ...s })));
         
         if (typeof beginSession === 'function') {
             DOM.landingView.classList.remove('active');
@@ -228,8 +194,8 @@ document.addEventListener('click', (e) => {
         const clickedVolumeChip = e.target.closest('#volume-controls .chip');
         const clickedTab = e.target.closest('.tab-btn');
         
-        if (!clickedCard && !clickedPresetChip && !clickedVolumeChip && !clickedTab) {
-            document.querySelectorAll('#tab-mood .mood-card, #preset-controls .chip, #preset-controls .mood-card').forEach(c => {
+        if (!clickedCard && !clickedVolumeChip && !clickedTab) {
+            document.querySelectorAll('#tab-mood .mood-card').forEach(c => {
                 c.classList.remove('active');
                 c.classList.remove('active-blue');
             });

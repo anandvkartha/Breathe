@@ -15,197 +15,83 @@
   <div id="app">
     <!-- Unified Landing View -->
     <div id="landing-view" class="view active glow-container">
-      <h2
-        style="color: var(--text-main); font-weight: 600; margin-bottom: 1.5rem; text-align: center; font-size: 1.5rem; letter-spacing: -0.02em;">
-        How are you feeling right now?
-      </h2>
-
-      <!-- Tab Toggle -->
-      <div class="tab-container">
-        <button id="tab-mood-toggle" class="tab-btn active">By Mood</button>
-        <button id="tab-presets-toggle" class="tab-btn">All Exercises</button>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; gap: 1rem;">
+        <h2 style="color: var(--text-main); font-weight: 600; font-size: 1.5rem; letter-spacing: -0.02em; margin: 0;">
+          Let's feel better...
+        </h2>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">Volume</span>
+          <div class="chip-group minimal-chips" id="volume-controls" style="display: flex; gap: 0.25rem;">
+            <button class="chip">Off</button>
+            <button class="chip active-blue">30</button>
+            <button class="chip">70</button>
+            <button class="chip">100</button>
+          </div>
+        </div>
       </div>
 
-      <!-- Moods Grid (Tab 1) -->
+      <!-- Moods Grid -->
       <div id="tab-mood" class="tab-content active">
         <div class="mood-grid">
           <button class="mood-card" data-preset="Box-5">
             <div class="mood-card-content"><span class="emoji">🌅</span>
-              <div class="mood-text-group"><span>Just woke up / Morning grogginess</span><span class="mood-mapping">→
-                  Box-5</span></div>
+              <div class="mood-text-group"><span>Just woke up</span><span class="mood-mapping">→ Box-5</span></div>
             </div>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
           </button>
+          
           <button class="mood-card" data-preset="4-7-8 + Ocean Trance">
             <div class="mood-card-content"><span class="emoji">🌙</span>
-              <div class="mood-text-group"><span>Want to sleep / Insomnia</span><span class="mood-mapping">→ 4-7-8 +
-                  Ocean Trance</span></div>
+              <div class="mood-text-group"><span>Want to sleep</span><span class="mood-mapping">→ 4-7-8 + Ocean Trance</span></div>
             </div>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
           </button>
+
           <button class="mood-card" data-preset="Rapid Eye Movement + Box-5">
             <div class="mood-card-content"><span class="emoji">🌪️</span>
-              <div class="mood-text-group"><span>Had a fight / Ruminating thoughts</span><span class="mood-mapping">→
-                  Rapid Eye Movement + Box-5</span></div>
+              <div class="mood-text-group"><span>Angry / Ruminating</span><span class="mood-mapping">→ Rapid Eye Movement + Box-5</span></div>
             </div>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
           </button>
+
           <button class="mood-card" data-preset="Energize + Upgaze">
             <div class="mood-card-content"><span class="emoji">🚀</span>
-              <div class="mood-text-group"><span>Need a boost / Feeling underconfident</span><span
-                  class="mood-mapping">→ Energize + Upgaze</span></div>
+              <div class="mood-text-group"><span>Underconfident / Need a boost</span><span class="mood-mapping">→ Energize + Upgaze</span></div>
             </div>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
           </button>
+
           <button class="mood-card" data-preset="Coherence-5">
             <div class="mood-card-content"><span class="emoji">⚖️</span>
-              <div class="mood-text-group"><span>Feeling overconfident / Scattered</span><span class="mood-mapping">→
-                  Coherence-5</span></div>
+              <div class="mood-text-group"><span>Overconfident / Scattered</span><span class="mood-mapping">→ Coherence-5</span></div>
             </div>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
           </button>
+
           <button class="mood-card" data-preset="Calm">
             <div class="mood-card-content"><span class="emoji">🌬️</span>
-              <div class="mood-text-group"><span>Anxious / Tight chest</span><span class="mood-mapping">→ Calm</span>
-              </div>
+              <div class="mood-text-group"><span>Anxious</span><span class="mood-mapping">→ Calm</span></div>
             </div>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
           </button>
+
           <button class="mood-card" data-preset="Micro-Break">
             <div class="mood-card-content"><span class="emoji">⏸️</span>
-              <div class="mood-text-group"><span>Busy workday / Need a break</span><span class="mood-mapping">→
-                  Micro-Break</span></div>
+              <div class="mood-text-group"><span>Busy / Need a break</span><span class="mood-mapping">→ Micro-Break</span></div>
             </div>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
           </button>
+
           <button class="mood-card" data-preset="Desk Mobility" style="border-color: rgba(52, 168, 83, 0.3);">
             <div class="mood-card-content"><span class="emoji">🤸</span>
-              <div class="mood-text-group"><span>Physical stiffness / Sitting too long</span><span
-                  class="mood-mapping">→ Desk Mobility</span></div>
+              <div class="mood-text-group"><span>Sitting too long</span><span class="mood-mapping">→ Desk Mobility</span></div>
             </div>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></div>
           </button>
         </div>
       </div>
 
-      <!-- Presets Grid (Tab 2) -->
-      <div id="tab-presets" class="tab-content">
-        <div class="mood-grid preset-grid" id="preset-controls">
-          <button class="mood-card preset-card active" data-preset="Micro-Break">
-            <span class="preset-name">Micro-Break</span>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
-          </button>
-          <button class="mood-card preset-card" data-preset="Calm">
-            <span class="preset-name">Calm</span>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
-          </button>
-          <button class="mood-card preset-card" data-preset="Coherence-5">
-            <span class="preset-name">Coherence-5</span>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
-          </button>
-          <button class="mood-card preset-card" data-preset="Box-5">
-            <span class="preset-name">Box-5</span>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
-          </button>
-          <button class="mood-card preset-card" data-preset="4-7-8">
-            <span class="preset-name">4-7-8</span>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
-          </button>
-          <button class="mood-card preset-card" data-preset="Energize">
-            <span class="preset-name">Energize</span>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
-          </button>
 
-          <button class="mood-card preset-card" data-preset="Rapid Eye Movement">
-            <span class="preset-name">Rapid Eye Movement</span>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
-          </button>
-          <button class="mood-card preset-card" data-preset="Creative Upgaze">
-            <span class="preset-name">Creative Upgaze</span>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
-          </button>
-          <button class="mood-card preset-card" data-preset="Introspective Downgaze">
-            <span class="preset-name">Introspective Downgaze</span>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
-          </button>
-          <button class="mood-card preset-card" data-preset="Desk Mobility">
-            <span class="preset-name">Desk Mobility</span>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
-          </button>
-        </div>
-      </div>
 
       <!-- Persistent Info and Controls -->
       <div style="margin-top: 2rem;">
@@ -241,17 +127,7 @@
           </ul>
         </div>
 
-        <div class="minimal-section" style="max-width: 650px; margin: 0 auto;">
-          <span
-            style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.75rem; display: block;">Sound
-            Volume</span>
-          <div class="chip-group minimal-chips" id="volume-controls">
-            <button class="chip">Off</button>
-            <button class="chip active-blue">25</button>
-            <button class="chip">70</button>
-            <button class="chip">100</button>
-          </div>
-        </div>
+
       </div>
     </div>
 
