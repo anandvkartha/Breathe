@@ -153,6 +153,74 @@ setupChipGroup(DOM.volumeControls, invVolMap[state.volume] || '1', (val) => {
     state.volume = volMap[val] !== undefined ? volMap[val] : 30;
 });
 
+const PRESET_EXPLANATIONS = {
+    'Box-5': {
+        title: 'Why use Box Breathing?',
+        points: [
+            'Jumpstarts the nervous system with structured oxygen flow',
+            'Clears morning brain fog',
+            'Creates a steady, calm foundation for the day'
+        ]
+    },
+    '4-7-8 + Ocean Trance': {
+        title: 'Why use 4-7-8 Breathing?',
+        points: [
+            'Acts as a natural tranquilizer for the nervous system',
+            'Prolonged exhalation activates the parasympathetic (rest) response',
+            'Rhythmic ocean sounds lower heart rate and induce deep relaxation'
+        ]
+    },
+    'Rapid Eye Movement + Box-5': {
+        title: 'Why use Rapid Eye Movement (REM)?',
+        points: [
+            'Rapidly reduces intense anxiety and panic',
+            'Breaks negative thought loops and rumination',
+            'Helps reprocess heavy emotional blocks',
+            'Anchors and grounds you physically in the present'
+        ]
+    },
+    'Energize + Upgaze': {
+        title: 'Why use Energize & Upgaze?',
+        points: [
+            'Looking up activates creative problem-solving pathways',
+            'Rapid inhales simulate excitement, boosting energy',
+            'Lifts mood and breaks downward-looking posture'
+        ]
+    },
+    'Coherence-5': {
+        title: 'Why use Coherence Breathing?',
+        points: [
+            'Synchronizes heart rate with breathing rhythm',
+            'Balances the nervous system, bringing focus',
+            'Cultivates grounded, clear-headed presence'
+        ]
+    },
+    'Calm': {
+        title: 'Why use the Physiological Sigh?',
+        points: [
+            'Double inhales fully inflate the lungs, popping open alveoli',
+            'Long sighs offload built-up carbon dioxide quickly',
+            'Instantly signals the brain that you are safe'
+        ]
+    },
+    'Micro-Break': {
+        title: 'Why use a Micro-Break?',
+        points: [
+            'Provides a quick neurological reset between tasks',
+            'Relieves shallow chest breathing caused by screen time',
+            'Restores cognitive capacity and attention'
+        ]
+    },
+    'Desk Mobility': {
+        title: 'Why use Desk Mobility?',
+        points: [
+            'Flushes stagnant blood and lymphatic fluid',
+            'Releases physical tension stored in the neck and shoulders',
+            'Reconnects the brain to the physical body'
+        ]
+    }
+};
+
 // Mood Selector Routing
 document.querySelectorAll('#tab-mood .mood-card').forEach(card => {
     card.addEventListener('click', (e) => {
@@ -164,12 +232,17 @@ document.querySelectorAll('#tab-mood .mood-card').forEach(card => {
             c.classList.toggle('active', c.dataset.preset === state.preset);
         });
 
-        const remInfo = document.getElementById('rem-info');
-        const upgazeInfo = document.getElementById('upgaze-info');
-        const downgazeInfo = document.getElementById('downgaze-info');
-        if (remInfo) remInfo.style.display = state.preset.includes('Rapid Eye Movement') ? 'block' : 'none';
-        if (upgazeInfo) upgazeInfo.style.display = state.preset.includes('Upgaze') ? 'block' : 'none';
-        if (downgazeInfo) downgazeInfo.style.display = state.preset.includes('Downgaze') ? 'block' : 'none';
+        const infoBlock = document.getElementById('preset-info');
+        const titleEl = document.getElementById('preset-info-title');
+        const listEl = document.getElementById('preset-info-list');
+        
+        if (infoBlock && PRESET_EXPLANATIONS[state.preset]) {
+            titleEl.textContent = PRESET_EXPLANATIONS[state.preset].title;
+            listEl.innerHTML = PRESET_EXPLANATIONS[state.preset].points.map(p => `<li>${p}</li>`).join('');
+            infoBlock.style.display = 'block';
+        } else if (infoBlock) {
+            infoBlock.style.display = 'none';
+        }
 
         if (e.target.closest('.play-arrow') && typeof beginSession === 'function') {
             DOM.landingView.classList.remove('active');
@@ -202,6 +275,8 @@ document.addEventListener('click', (e) => {
                 c.classList.remove('active');
                 c.classList.remove('active-blue');
             });
+            const infoBlock = document.getElementById('preset-info');
+            if (infoBlock) infoBlock.style.display = 'none';
         }
     }
 });
