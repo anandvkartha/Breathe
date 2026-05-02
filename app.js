@@ -84,7 +84,35 @@ const formatTimeSpan = (seconds) => {
 };
 
 // ----------------------------------------------------
-// UI Renderers & Bindings
+// Wake Lock Management
+// ----------------------------------------------------
+let wakeLock = null;
+
+const requestWakeLock = async () => {
+    try {
+        if ('wakeLock' in navigator) {
+            wakeLock = await navigator.wakeLock.request('screen');
+        }
+    } catch (err) {
+        console.error(`Wake Lock error: ${err.name}, ${err.message}`);
+    }
+};
+
+const releaseWakeLock = async () => {
+    if (wakeLock !== null) {
+        await wakeLock.release();
+        wakeLock = null;
+    }
+};
+
+document.addEventListener('visibilitychange', async () => {
+    if (state.sessionActive && wakeLock !== null && document.visibilityState === 'visible') {
+        requestWakeLock();
+    }
+});
+
+// ----------------------------------------------------
+// Initialization & History
 // ----------------------------------------------------
 
 const setupChipGroup = (container, activeValue, onChange) => {
@@ -365,6 +393,7 @@ const speak = (text) => {
 
 const beginSession = () => {
     state.sessionActive = true;
+    requestWakeLock();
     DOM.landingView.classList.remove('active');
     DOM.activeSession.classList.add('active');
 
@@ -804,6 +833,7 @@ const beginSession = () => {
 
 const stopSession = (completed = false) => {
     state.sessionActive = false;
+    releaseWakeLock();
     clearInterval(engineInterval);
     window.speechSynthesis.cancel();
     if (state.preset !== 'Desk Mobility') {
