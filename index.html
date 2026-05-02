@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breathe</title>
+  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div id="app">
+    <!-- Unified Landing View -->
+    <div id="landing-view" class="view active glow-container">
+      <h2
+        style="color: var(--text-main); font-weight: 600; margin-bottom: 1.5rem; text-align: center; font-size: 1.5rem; letter-spacing: -0.02em;">
+        How are you feeling right now?
+      </h2>
+
+      <!-- Tab Toggle -->
+      <div class="tab-container">
+        <button id="tab-mood-toggle" class="tab-btn active">By Mood</button>
+        <button id="tab-presets-toggle" class="tab-btn">All Exercises</button>
+      </div>
+
+      <!-- Moods Grid (Tab 1) -->
+      <div id="tab-mood" class="tab-content active">
+        <div class="mood-grid">
+          <button class="mood-card" data-preset="Box-5">
+            <div class="mood-card-content"><span class="emoji">🌅</span>
+              <div class="mood-text-group"><span>Just woke up / Morning grogginess</span><span class="mood-mapping">→
+                  Box-5</span></div>
+            </div>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></div>
+          </button>
+          <button class="mood-card" data-preset="4-7-8 + Ocean Trance">
+            <div class="mood-card-content"><span class="emoji">🌙</span>
+              <div class="mood-text-group"><span>Want to sleep / Insomnia</span><span class="mood-mapping">→ 4-7-8 +
+                  Ocean Trance</span></div>
+            </div>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></div>
+          </button>
+          <button class="mood-card" data-preset="Rapid Eye Movement + Box-5">
+            <div class="mood-card-content"><span class="emoji">🌪️</span>
+              <div class="mood-text-group"><span>Had a fight / Ruminating thoughts</span><span class="mood-mapping">→
+                  Rapid Eye Movement + Box-5</span></div>
+            </div>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></div>
+          </button>
+          <button class="mood-card" data-preset="Energize + Upgaze">
+            <div class="mood-card-content"><span class="emoji">🚀</span>
+              <div class="mood-text-group"><span>Need a boost / Feeling underconfident</span><span
+                  class="mood-mapping">→ Energize + Upgaze</span></div>
+            </div>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></div>
+          </button>
+          <button class="mood-card" data-preset="Coherence-5">
+            <div class="mood-card-content"><span class="emoji">⚖️</span>
+              <div class="mood-text-group"><span>Feeling overconfident / Scattered</span><span class="mood-mapping">→
+                  Coherence-5</span></div>
+            </div>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></div>
+          </button>
+          <button class="mood-card" data-preset="Calm">
+            <div class="mood-card-content"><span class="emoji">🌬️</span>
+              <div class="mood-text-group"><span>Anxious / Tight chest</span><span class="mood-mapping">→ Calm</span>
+              </div>
+            </div>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></div>
+          </button>
+          <button class="mood-card" data-preset="Micro-Break">
+            <div class="mood-card-content"><span class="emoji">⏸️</span>
+              <div class="mood-text-group"><span>Busy workday / Need a break</span><span class="mood-mapping">→
+                  Micro-Break</span></div>
+            </div>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></div>
+          </button>
+          <button class="mood-card" data-preset="Desk Mobility" style="border-color: rgba(52, 168, 83, 0.3);">
+            <div class="mood-card-content"><span class="emoji">🤸</span>
+              <div class="mood-text-group"><span>Physical stiffness / Sitting too long</span><span
+                  class="mood-mapping">→ Desk Mobility</span></div>
+            </div>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Presets Grid (Tab 2) -->
+      <div id="tab-presets" class="tab-content">
+        <div class="mood-grid preset-grid" id="preset-controls">
+          <button class="mood-card preset-card active" data-preset="Micro-Break">
+            <span class="preset-name">Micro-Break</span>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></div>
+          </button>
+          <button class="mood-card preset-card" data-preset="Calm">
+            <span class="preset-name">Calm</span>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></div>
+          </button>
+          <button class="mood-card preset-card" data-preset="Coherence-5">
+            <span class="preset-name">Coherence-5</span>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></div>
+          </button>
+          <button class="mood-card preset-card" data-preset="Box-5">
+            <span class="preset-name">Box-5</span>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></div>
+          </button>
+          <button class="mood-card preset-card" data-preset="4-7-8">
+            <span class="preset-name">4-7-8</span>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></div>
+          </button>
+          <button class="mood-card preset-card" data-preset="Energize">
+            <span class="preset-name">Energize</span>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></div>
+          </button>
+
+          <button class="mood-card preset-card" data-preset="Rapid Eye Movement">
+            <span class="preset-name">Rapid Eye Movement</span>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></div>
+          </button>
+          <button class="mood-card preset-card" data-preset="Creative Upgaze">
+            <span class="preset-name">Creative Upgaze</span>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></div>
+          </button>
+          <button class="mood-card preset-card" data-preset="Introspective Downgaze">
+            <span class="preset-name">Introspective Downgaze</span>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></div>
+          </button>
+          <button class="mood-card preset-card" data-preset="Desk Mobility">
+            <span class="preset-name">Desk Mobility</span>
+            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg></div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Persistent Info and Controls -->
+      <div style="margin-top: 2rem;">
+        <div id="rem-info"
+          style="display: none; padding: 1rem; margin-bottom: 2rem; background: rgba(138, 180, 248, 0.05); border-radius: 8px; border: 1px solid var(--border-color);">
+          <strong style="color: var(--accent-blue); font-size: 0.85rem;">Why use Rapid Eye Movement (REM)?</strong>
+          <ul
+            style="margin-top: 0.5rem; margin-left: 1.2rem; font-size: 0.8rem; color: var(--text-main); line-height: 1.6;">
+            <li>Rapidly reduces intense anxiety and panic</li>
+            <li>Breaks negative thought loops and rumination</li>
+            <li>Helps reprocess heavy emotional blocks</li>
+            <li>Anchors and grounds you physically in the present</li>
+          </ul>
+        </div>
+        <div id="upgaze-info"
+          style="display: none; padding: 1rem; margin-bottom: 2rem; background: rgba(138, 180, 248, 0.05); border-radius: 8px; border: 1px solid var(--border-color);">
+          <strong style="color: var(--accent-blue); font-size: 0.85rem;">Why use Creative Upgaze?</strong>
+          <ul
+            style="margin-top: 0.5rem; margin-left: 1.2rem; font-size: 0.8rem; color: var(--text-main); line-height: 1.6;">
+            <li>Looking up activates creative problem-solving pathways</li>
+            <li>Lifts mood and energy automatically</li>
+            <li>Breaks the downward-looking tech posture</li>
+          </ul>
+        </div>
+        <div id="downgaze-info"
+          style="display: none; padding: 1rem; margin-bottom: 2rem; background: rgba(138, 180, 248, 0.05); border-radius: 8px; border: 1px solid var(--border-color);">
+          <strong style="color: var(--accent-blue); font-size: 0.85rem;">Why use Introspective Downgaze?</strong>
+          <ul
+            style="margin-top: 0.5rem; margin-left: 1.2rem; font-size: 0.8rem; color: var(--text-main); line-height: 1.6;">
+            <li>Looking down promotes inner reflection and grounding</li>
+            <li>Calms the nervous system during overwhelming moments</li>
+            <li>Helps tune out external visual distractions</li>
+          </ul>
+        </div>
+
+        <div class="minimal-section" style="max-width: 650px; margin: 0 auto;">
+          <span
+            style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.75rem; display: block;">Sound
+            Volume</span>
+          <div class="chip-group minimal-chips" id="volume-controls">
+            <button class="chip">Off</button>
+            <button class="chip active-blue">25</button>
+            <button class="chip">70</button>
+            <button class="chip">100</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Session View -->
+    <div id="active-session" class="view">
+      <div class="session-header">
+        <button class="btn-outline" id="early-finish-btn"
+          style="font-size: 0.75rem; padding: 0.4rem 0.8rem; border-color: rgba(255,255,255,0.15); color: var(--text-dim); transition: all 0.2s ease;">Finish
+          Early</button>
+        <button class="btn-icon" id="stop-session-btn">×</button>
+      </div>
+      <div class="breathing-area">
+        <div id="posture-reminder" class="posture-reminder"></div>
+        <div id="mobility-figure"
+          style="display: none; justify-content: center; align-items: center; position: absolute; width: 100%; height: 100%; z-index: 5;">
+          <svg viewBox="0 0 100 100"
+            style="width: 150px; height: 150px; stroke: var(--accent-blue); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; fill: none; transition: transform 0.5s;">
+            <g id="fig-group" class="figure-group" style="transform-origin: 50px 95px;">
+              <circle cx="50" cy="15" r="9" id="fig-head" class="fig-head" style="transform-origin: 50px 30px;" />
+              <line x1="50" y1="28" x2="50" y2="65" class="fig-torso" />
+              <line x1="50" y1="35" x2="25" y2="65" id="fig-arml" class="fig-arml"
+                style="transform-origin: 50px 35px;" />
+              <line x1="50" y1="35" x2="75" y2="65" id="fig-armr" class="fig-armr"
+                style="transform-origin: 50px 35px;" />
+              <line x1="50" y1="65" x2="35" y2="95" class="fig-legl" />
+              <line x1="50" y1="65" x2="65" y2="95" class="fig-legr" />
+            </g>
+          </svg>
+        </div>
+        <div id="breathing-circle" class="circle"></div>
+        <div id="eye-dot" class="eye-dot"></div>
+        <div id="session-content" class="session-content">
+          <div id="session-instruction" class="instruction-text">Get Ready</div>
+          <div id="session-timer-display" class="session-timer">10</div>
+        </div>
+      </div>
+      <div class="session-footer-info">
+        <span id="stage-info">Stage 1</span>
+        <span id="session-total-timer">00:00 / 02:00</span>
+      </div>
+    </div>
+
+    <!-- Post Session Reflection -->
+    <div id="post-session" class="view glow-container" style="max-width: 600px; margin: auto; text-align: center;">
+      <div style="font-size: 3rem; margin-bottom: 1rem; margin-top: 2rem;">✨</div>
+      <h2 style="color: var(--text-main); font-weight: 500; margin-bottom: 1rem;">Session Complete</h2>
+      <p style="color: var(--text-dim); font-size: 1rem; margin-bottom: 2.5rem; line-height: 1.6;">
+        Take a slow, natural breath. Notice any shifts in your body.<br>How are you feeling compared to when you
+        started?
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+        <button class="btn-primary" id="post-better-btn" style="width: 100%; max-width: 350px;">I feel more
+          balanced</button>
+        <button class="btn-outline" id="post-same-btn"
+          style="width: 100%; max-width: 350px; padding: 0.8rem; border-color: var(--border-color); color: var(--text-dim);">I
+          still need help regulating</button>
+      </div>
+    </div>
+    <!-- Stats / Calendar View -->
+    <div id="stats-view" class="view glow-container" style="max-width: 600px; margin: auto;">
+      <div class="session-header" style="padding: 0; margin-bottom: 2rem;">
+        <h2 style="color: var(--text-main); font-weight: 500; margin: 0;">Your Progress</h2>
+        <button class="btn-icon" id="close-stats-btn">×</button>
+      </div>
+      <div>
+        <p style="color: var(--text-dim); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.5;">
+          Every time you complete an exercise and regulate your nervous system, it gets recorded here. Building
+          consistency is the key to physiological resilience.
+        </p>
+        <div id="calendar-heatmap" style="display: flex; gap: 0.5rem; flex-wrap: wrap;"></div>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>
