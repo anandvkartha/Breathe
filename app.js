@@ -239,6 +239,7 @@ document.querySelectorAll('#tab-mood .mood-card').forEach(card => {
         if (infoBlock && PRESET_EXPLANATIONS[state.preset]) {
             titleEl.textContent = PRESET_EXPLANATIONS[state.preset].title;
             listEl.innerHTML = PRESET_EXPLANATIONS[state.preset].points.map(p => `<li>${p}</li>`).join('');
+            card.insertAdjacentElement('afterend', infoBlock);
             infoBlock.style.display = 'block';
         } else if (infoBlock) {
             infoBlock.style.display = 'none';
