@@ -146,8 +146,11 @@ const setupChipGroup = (container, activeValue, onChange) => {
     });
 };
 
-setupChipGroup(DOM.volumeControls, state.volume === 0 ? 'Off' : state.volume.toString(), (val) => {
-    state.volume = val === 'Off' ? 0 : parseInt(val);
+const volMap = { '0': 0, '1': 30, '2': 70, '3': 100 };
+const invVolMap = { 0: '0', 30: '1', 70: '2', 100: '3' };
+
+setupChipGroup(DOM.volumeControls, invVolMap[state.volume] || '1', (val) => {
+    state.volume = volMap[val] !== undefined ? volMap[val] : 30;
 });
 
 // Mood Selector Routing
