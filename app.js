@@ -223,33 +223,40 @@ const PRESET_EXPLANATIONS = {
 
 // Mood Selector Routing
 document.querySelectorAll('#tab-mood .mood-card').forEach(card => {
+    const textGroup = card.querySelector('.mood-text-group');
+    if (textGroup) {
+        card.dataset.originalHtml = textGroup.innerHTML;
+    }
+
     card.addEventListener('click', (e) => {
+        if (e.target.closest('.play-arrow') && typeof beginSession === 'function') {
+            const selectedPreset = card.dataset.preset;
+            state.preset = selectedPreset;
+            state.stages = Array.from(PRESETS[state.preset].map(s => ({ ...s })));
+            DOM.landingView.classList.remove('active');
+            beginSession();
+            return;
+        }
+
         const selectedPreset = card.dataset.preset;
         state.preset = selectedPreset;
         state.stages = Array.from(PRESETS[state.preset].map(s => ({ ...s })));
         
         document.querySelectorAll('#tab-mood .mood-card').forEach(c => {
-            c.classList.toggle('active', c.dataset.preset === state.preset);
+            const isActive = c.dataset.preset === state.preset;
+            c.classList.toggle('active', isActive);
+            
+            const tg = c.querySelector('.mood-text-group');
+            if (isActive && PRESET_EXPLANATIONS[state.preset]) {
+                const expl = PRESET_EXPLANATIONS[state.preset];
+                tg.innerHTML = `<span style="font-weight: 600; color: var(--accent-blue); display: block; margin-bottom: 0.5rem;">${expl.title}</span><ul style="margin: 0; padding-left: 1.2rem; font-size: 0.8rem; text-align: left; list-style-type: disc; color: var(--text-main); line-height: 1.5;">${expl.points.map(p => `<li>${p}</li>`).join('')}</ul>`;
+            } else if (tg && c.dataset.originalHtml) {
+                tg.innerHTML = c.dataset.originalHtml;
+            }
         });
-
-        const infoBlock = document.getElementById('preset-info');
-        const titleEl = document.getElementById('preset-info-title');
-        const listEl = document.getElementById('preset-info-list');
-        
-        if (infoBlock && PRESET_EXPLANATIONS[state.preset]) {
-            titleEl.textContent = PRESET_EXPLANATIONS[state.preset].title;
-            listEl.innerHTML = PRESET_EXPLANATIONS[state.preset].points.map(p => `<li>${p}</li>`).join('');
-            card.insertAdjacentElement('afterend', infoBlock);
-            infoBlock.style.display = 'block';
-        } else if (infoBlock) {
-            infoBlock.style.display = 'none';
-        }
-
-        if (e.target.closest('.play-arrow') && typeof beginSession === 'function') {
-            DOM.landingView.classList.remove('active');
-            beginSession();
-        }
     });
+
+
 
     card.addEventListener('dblclick', () => {
         const selectedPreset = card.dataset.preset;
@@ -275,9 +282,11 @@ document.addEventListener('click', (e) => {
             document.querySelectorAll('#tab-mood .mood-card').forEach(c => {
                 c.classList.remove('active');
                 c.classList.remove('active-blue');
+                const tg = c.querySelector('.mood-text-group');
+                if (tg && c.dataset.originalHtml) {
+                    tg.innerHTML = c.dataset.originalHtml;
+                }
             });
-            const infoBlock = document.getElementById('preset-info');
-            if (infoBlock) infoBlock.style.display = 'none';
         }
     }
 });
