@@ -871,3 +871,31 @@ input[type=range]::-webkit-slider-thumb:hover {
   transform: translateY(-2px);
   color: var(--accent-blue);
 }
+/* Mobile Optimization */
+@media (max-width: 600px) {
+  .circle {
+    width: 200px !important;
+    height: 200px !important;
+  }
+  .instruction-text {
+    top: auto !important;
+    bottom: 5vh !important; 
+    font-size: 1.15rem !important;
+  }
+  .session-timer {
+    font-size: 3.5rem !important;
+  }
+  .mood-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .mood-card {
+    padding: 1rem 1.25rem;
+  }
+  .preset-card {
+    padding: 1rem 1.25rem;
+  }
+  .session-footer-info {
+    font-size: 0.75rem;
+  }
+}
