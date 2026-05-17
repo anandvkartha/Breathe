@@ -28,42 +28,42 @@ const PRESETS = {
         { duration: 30, type: 'Desk Mobility', mobilityType: 'reach', name: 'Deep Arm Reaches' },
         { duration: 30, type: 'Desk Mobility', mobilityType: 'rest', name: 'Rest and relax' }
     ],
-    '7-Min Calisthenics': [
-        { duration: 15, type: '7-Min Calisthenics', mobilityType: 'setup-jumping-jacks', name: 'Jumping Jacks', instruction: 'Stand upright, legs together, arms at your sides.' },
-        { duration: 30, type: '7-Min Calisthenics', mobilityType: 'jumping-jacks', name: 'Jumping Jacks' },
-        { duration: 20, type: '7-Min Calisthenics', mobilityType: 'rest', name: 'Rest' },
-        { duration: 15, type: '7-Min Calisthenics', mobilityType: 'setup-wall-sit', name: 'Wall Sit', instruction: 'Lean flat against a wall, slide down until knees are 90 degrees.' },
-        { duration: 30, type: '7-Min Calisthenics', mobilityType: 'wall-sit', name: 'Wall Sit' },
-        { duration: 20, type: '7-Min Calisthenics', mobilityType: 'rest', name: 'Rest' },
-        { duration: 15, type: '7-Min Calisthenics', mobilityType: 'setup-pushups', name: 'Push-ups', instruction: 'Place hands slightly wider than shoulders, keep body straight.' },
-        { duration: 30, type: '7-Min Calisthenics', mobilityType: 'pushups', name: 'Push-ups' },
-        { duration: 20, type: '7-Min Calisthenics', mobilityType: 'rest', name: 'Rest' },
-        { duration: 15, type: '7-Min Calisthenics', mobilityType: 'setup-crunches', name: 'Crunches', instruction: 'Lie on your back, knees bent, hands gently behind your ears.' },
-        { duration: 30, type: '7-Min Calisthenics', mobilityType: 'crunches', name: 'Crunches' },
-        { duration: 20, type: '7-Min Calisthenics', mobilityType: 'rest', name: 'Rest' },
-        { duration: 15, type: '7-Min Calisthenics', mobilityType: 'setup-step-ups', name: 'Step-ups', instruction: 'Face a sturdy chair, place one foot fully on the seat.' },
-        { duration: 30, type: '7-Min Calisthenics', mobilityType: 'step-ups', name: 'Step-ups' },
-        { duration: 20, type: '7-Min Calisthenics', mobilityType: 'rest', name: 'Rest' },
-        { duration: 15, type: '7-Min Calisthenics', mobilityType: 'setup-squats', name: 'Squats', instruction: 'Feet shoulder-width apart, keep your chest up and back straight.' },
-        { duration: 30, type: '7-Min Calisthenics', mobilityType: 'squats', name: 'Squats' },
-        { duration: 20, type: '7-Min Calisthenics', mobilityType: 'rest', name: 'Rest' },
-        { duration: 15, type: '7-Min Calisthenics', mobilityType: 'setup-triceps-dips', name: 'Triceps Dips', instruction: 'Hands on edge of a chair, legs extended, prepare to lower body.' },
-        { duration: 30, type: '7-Min Calisthenics', mobilityType: 'triceps-dips', name: 'Triceps Dips' },
-        { duration: 20, type: '7-Min Calisthenics', mobilityType: 'rest', name: 'Rest' },
-        { duration: 15, type: '7-Min Calisthenics', mobilityType: 'setup-plank', name: 'Plank', instruction: 'Forearms on the floor, elbows under shoulders, back straight.' },
-        { duration: 30, type: '7-Min Calisthenics', mobilityType: 'plank', name: 'Plank' },
-        { duration: 20, type: '7-Min Calisthenics', mobilityType: 'rest', name: 'Rest' },
-        { duration: 15, type: '7-Min Calisthenics', mobilityType: 'setup-high-knees', name: 'High Knees', instruction: 'Stand tall, bring your knees up to your chest alternatively.' },
-        { duration: 30, type: '7-Min Calisthenics', mobilityType: 'high-knees', name: 'High Knees' },
-        { duration: 20, type: '7-Min Calisthenics', mobilityType: 'rest', name: 'Rest' },
-        { duration: 15, type: '7-Min Calisthenics', mobilityType: 'setup-lunges', name: 'Lunges', instruction: 'Step forward, lower hips until knees are 90 degrees.' },
-        { duration: 30, type: '7-Min Calisthenics', mobilityType: 'lunges', name: 'Lunges' },
-        { duration: 20, type: '7-Min Calisthenics', mobilityType: 'rest', name: 'Rest' },
-        { duration: 15, type: '7-Min Calisthenics', mobilityType: 'setup-pushup-rotation', name: 'Push-up & Rotation', instruction: 'Start in push-up position, prepare to rotate and raise one arm up.' },
-        { duration: 30, type: '7-Min Calisthenics', mobilityType: 'pushup-rotation', name: 'Push-up & Rotation' },
-        { duration: 20, type: '7-Min Calisthenics', mobilityType: 'rest', name: 'Rest' },
-        { duration: 15, type: '7-Min Calisthenics', mobilityType: 'setup-side-plank', name: 'Side Plank', instruction: 'Lie on your side, prop up on one forearm, body straight.' },
-        { duration: 30, type: '7-Min Calisthenics', mobilityType: 'side-plank', name: 'Side Plank' }
+    '7-Min Daily Exercise': [
+        { duration: 15, type: '7-Min Daily Exercise', mobilityType: 'setup-jumping-jacks', name: 'Jumping Jacks', instruction: 'Stand upright, legs together, arms at your sides.' },
+        { duration: 30, type: '7-Min Daily Exercise', mobilityType: 'jumping-jacks', name: 'Jumping Jacks' },
+        { duration: 20, type: '7-Min Daily Exercise', mobilityType: 'rest', name: 'Rest' },
+        { duration: 15, type: '7-Min Daily Exercise', mobilityType: 'setup-wall-sit', name: 'Wall Sit', instruction: 'Lean flat against a wall, slide down until knees are 90 degrees.' },
+        { duration: 30, type: '7-Min Daily Exercise', mobilityType: 'wall-sit', name: 'Wall Sit' },
+        { duration: 20, type: '7-Min Daily Exercise', mobilityType: 'rest', name: 'Rest' },
+        { duration: 15, type: '7-Min Daily Exercise', mobilityType: 'setup-pushups', name: 'Push-ups', instruction: 'Place hands slightly wider than shoulders, keep body straight.' },
+        { duration: 30, type: '7-Min Daily Exercise', mobilityType: 'pushups', name: 'Push-ups' },
+        { duration: 20, type: '7-Min Daily Exercise', mobilityType: 'rest', name: 'Rest' },
+        { duration: 15, type: '7-Min Daily Exercise', mobilityType: 'setup-crunches', name: 'Crunches', instruction: 'Lie on your back, knees bent, hands gently behind your ears.' },
+        { duration: 30, type: '7-Min Daily Exercise', mobilityType: 'crunches', name: 'Crunches' },
+        { duration: 20, type: '7-Min Daily Exercise', mobilityType: 'rest', name: 'Rest' },
+        { duration: 15, type: '7-Min Daily Exercise', mobilityType: 'setup-step-ups', name: 'Step-ups', instruction: 'Face a sturdy chair, place one foot fully on the seat.' },
+        { duration: 30, type: '7-Min Daily Exercise', mobilityType: 'step-ups', name: 'Step-ups' },
+        { duration: 20, type: '7-Min Daily Exercise', mobilityType: 'rest', name: 'Rest' },
+        { duration: 15, type: '7-Min Daily Exercise', mobilityType: 'setup-squats', name: 'Squats', instruction: 'Feet shoulder-width apart, keep your chest up and back straight.' },
+        { duration: 30, type: '7-Min Daily Exercise', mobilityType: 'squats', name: 'Squats' },
+        { duration: 20, type: '7-Min Daily Exercise', mobilityType: 'rest', name: 'Rest' },
+        { duration: 15, type: '7-Min Daily Exercise', mobilityType: 'setup-triceps-dips', name: 'Triceps Dips', instruction: 'Hands on edge of a chair, legs extended, prepare to lower body.' },
+        { duration: 30, type: '7-Min Daily Exercise', mobilityType: 'triceps-dips', name: 'Triceps Dips' },
+        { duration: 20, type: '7-Min Daily Exercise', mobilityType: 'rest', name: 'Rest' },
+        { duration: 15, type: '7-Min Daily Exercise', mobilityType: 'setup-plank', name: 'Plank', instruction: 'Forearms on the floor, elbows under shoulders, back straight.' },
+        { duration: 30, type: '7-Min Daily Exercise', mobilityType: 'plank', name: 'Plank' },
+        { duration: 20, type: '7-Min Daily Exercise', mobilityType: 'rest', name: 'Rest' },
+        { duration: 15, type: '7-Min Daily Exercise', mobilityType: 'setup-high-knees', name: 'High Knees', instruction: 'Stand tall, bring your knees up to your chest alternatively.' },
+        { duration: 30, type: '7-Min Daily Exercise', mobilityType: 'high-knees', name: 'High Knees' },
+        { duration: 20, type: '7-Min Daily Exercise', mobilityType: 'rest', name: 'Rest' },
+        { duration: 15, type: '7-Min Daily Exercise', mobilityType: 'setup-lunges', name: 'Lunges', instruction: 'Step forward, lower hips until knees are 90 degrees.' },
+        { duration: 30, type: '7-Min Daily Exercise', mobilityType: 'lunges', name: 'Lunges' },
+        { duration: 20, type: '7-Min Daily Exercise', mobilityType: 'rest', name: 'Rest' },
+        { duration: 15, type: '7-Min Daily Exercise', mobilityType: 'setup-pushup-rotation', name: 'Push-up & Rotation', instruction: 'Start in push-up position, prepare to rotate and raise one arm up.' },
+        { duration: 30, type: '7-Min Daily Exercise', mobilityType: 'pushup-rotation', name: 'Push-up & Rotation' },
+        { duration: 20, type: '7-Min Daily Exercise', mobilityType: 'rest', name: 'Rest' },
+        { duration: 15, type: '7-Min Daily Exercise', mobilityType: 'setup-side-plank', name: 'Side Plank', instruction: 'Lie on your side, prop up on one forearm, body straight.' },
+        { duration: 30, type: '7-Min Daily Exercise', mobilityType: 'side-plank', name: 'Side Plank' }
     ]
 };
 
@@ -160,12 +160,12 @@ const setupChipGroup = (container, activeValue, onChange) => {
 
         const newBtn = btn.cloneNode(true);
         btn.parentNode.replaceChild(newBtn, btn);
-        
+
         newBtn.addEventListener('click', (e) => {
             const newVal = newBtn.dataset.preset || newBtn.textContent.trim();
             onChange(newVal);
             setupChipGroup(container, newVal, onChange);
-            
+
             if (e.target.closest('.play-arrow') && typeof beginSession === 'function') {
                 beginSession();
             }
@@ -175,7 +175,7 @@ const setupChipGroup = (container, activeValue, onChange) => {
             const newVal = newBtn.dataset.preset || newBtn.textContent.trim();
             onChange(newVal);
             setupChipGroup(container, newVal, onChange);
-            
+
             if (typeof beginSession === 'function') {
                 beginSession();
             }
@@ -256,8 +256,8 @@ const PRESET_EXPLANATIONS = {
             'Reconnects the brain to the physical body'
         ]
     },
-    '7-Min Calisthenics': {
-        title: 'Why use the 7-Min Calisthenics Routine?',
+    '7-Min Daily Exercise': {
+        title: 'Why use the 7-Min Daily Exercise Routine?',
         points: [
             'Scientifically designed to provide maximum benefits in minimal time',
             'Combines aerobic and resistance training for full-body engagement',
@@ -286,11 +286,11 @@ document.querySelectorAll('#tab-mood .mood-card').forEach(card => {
         const selectedPreset = card.dataset.preset;
         state.preset = selectedPreset;
         state.stages = Array.from(PRESETS[state.preset].map(s => ({ ...s })));
-        
+
         document.querySelectorAll('#tab-mood .mood-card').forEach(c => {
             const isActive = c.dataset.preset === state.preset;
             c.classList.toggle('active', isActive);
-            
+
             const tg = c.querySelector('.mood-text-group');
             if (isActive && PRESET_EXPLANATIONS[state.preset]) {
                 const expl = PRESET_EXPLANATIONS[state.preset];
@@ -307,7 +307,7 @@ document.querySelectorAll('#tab-mood .mood-card').forEach(card => {
         const selectedPreset = card.dataset.preset;
         state.preset = selectedPreset;
         state.stages = Array.from(PRESETS[state.preset].map(s => ({ ...s })));
-        
+
         if (typeof beginSession === 'function') {
             DOM.landingView.classList.remove('active');
             beginSession();
@@ -322,7 +322,7 @@ document.addEventListener('click', (e) => {
         const clickedPresetChip = e.target.closest('#preset-controls .chip');
         const clickedVolumeChip = e.target.closest('#volume-controls .chip');
         const clickedTab = e.target.closest('.tab-btn');
-        
+
         if (!clickedCard && !clickedVolumeChip && !clickedTab) {
             document.querySelectorAll('#tab-mood .mood-card').forEach(c => {
                 c.classList.remove('active');
@@ -405,7 +405,7 @@ let oceanOsc, oceanGain, oceanFilter;
 const initAudio = () => {
     if (!audioCtx) {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        
+
         const bufferSize = audioCtx.sampleRate * 2;
         const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
         const data = buffer.getChannelData(0);
@@ -415,14 +415,14 @@ const initAudio = () => {
         oceanOsc = audioCtx.createBufferSource();
         oceanOsc.buffer = buffer;
         oceanOsc.loop = true;
-        
+
         oceanFilter = audioCtx.createBiquadFilter();
         oceanFilter.type = 'lowpass';
         oceanFilter.frequency.value = 400; // Deep ocean sound
-        
+
         oceanGain = audioCtx.createGain();
         oceanGain.gain.value = 0;
-        
+
         oceanOsc.connect(oceanFilter);
         oceanFilter.connect(oceanGain);
         oceanGain.connect(audioCtx.destination);
@@ -440,12 +440,12 @@ const playBeep = (freq = 440, type = 'sine', duration = 0.5, volMultiplier = 1) 
     const gain = audioCtx.createGain();
     osc.type = type;
     osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-    
+
     gain.gain.setValueAtTime(0, audioCtx.currentTime);
     const maxVol = (state.volume / 100) * 0.1 * volMultiplier;
     gain.gain.linearRampToValueAtTime(maxVol, audioCtx.currentTime + 0.05);
     gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-    
+
     osc.connect(gain);
     gain.connect(audioCtx.destination);
     osc.start();
@@ -480,11 +480,11 @@ const startWorkoutMusic = () => {
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         const filter = audioCtx.createBiquadFilter();
-        
+
         osc.type = 'square';
         filter.type = 'highpass';
         filter.frequency.value = 8000;
-        
+
         osc.connect(filter);
         filter.connect(gain);
         gain.connect(audioCtx.destination);
@@ -521,7 +521,7 @@ const startWorkoutMusic = () => {
 
     let beatCount = 0;
     const bassSequence = [55, 55, 55, 55, 65, 65, 55, 55, 41, 41, 41, 41, 49, 49, 49, 49]; // Bassline pattern
-    
+
     if (workoutInterval) clearInterval(workoutInterval);
     workoutInterval = setInterval(() => {
         while (nextNoteTime < audioCtx.currentTime + 0.1) {
@@ -531,7 +531,7 @@ const startWorkoutMusic = () => {
             const bassFreq = bassSequence[beatCount % bassSequence.length];
             playBass(nextNoteTime, bassFreq);
             playBass(nextNoteTime + beatDuration / 2, bassFreq);
-            
+
             nextNoteTime += beatDuration;
             beatCount++;
         }
@@ -544,9 +544,9 @@ const stopWorkoutMusic = () => {
 
 const setOceanVolume = (targetVolume, transitionTime = 1, startVolume = null) => {
     if (!audioCtx) return;
-    
+
     let tVol = (state.volume <= 0 || state.sound === 'Off') ? 0 : (state.volume / 100) * targetVolume;
-    
+
     if (oceanGain) {
         oceanGain.gain.cancelScheduledValues(audioCtx.currentTime);
         if (startVolume !== null) {
@@ -558,7 +558,7 @@ const setOceanVolume = (targetVolume, transitionTime = 1, startVolume = null) =>
 };
 
 const speak = (text) => {
-    if (state.preset !== 'Desk Mobility' && state.preset !== '7-Min Calisthenics') return;
+    if (state.preset !== 'Desk Mobility' && state.preset !== '7-Min Daily Exercise') return;
     if (state.volume <= 0) return;
     if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
 
@@ -589,7 +589,7 @@ const beginSession = () => {
     window.speechSynthesis.cancel();
     window.speechSynthesis.getVoices();
 
-    if (state.preset !== 'Desk Mobility' && state.preset !== '7-Min Calisthenics') {
+    if (state.preset !== 'Desk Mobility' && state.preset !== '7-Min Daily Exercise') {
         initAudio();
         if (state.preset === 'Rapid Eye Movement') {
             setOceanVolume(0.5, 2);
@@ -598,7 +598,7 @@ const beginSession = () => {
         }
     }
 
-    if (state.preset === '7-Min Calisthenics') {
+    if (state.preset === '7-Min Daily Exercise') {
         startWorkoutMusic();
     }
 
@@ -620,7 +620,7 @@ const beginSession = () => {
         if (exerciseType === 'Introspective Downgaze') yOffset = '-90px';
 
         const isStaticGaze = exerciseType.includes('Gaze') || exerciseType.includes('Eye');
-        const isMobility = exerciseType === 'Desk Mobility' || exerciseType === '7-Min Calisthenics';
+        const isMobility = exerciseType === 'Desk Mobility' || exerciseType === '7-Min Daily Exercise';
 
         if (isMobility) {
             if (DOM.mobilityFigure) {
@@ -685,10 +685,10 @@ const beginSession = () => {
     const tick = () => {
         if (!state.sessionActive) return clearInterval(engineInterval);
 
-        if (currentExerciseType === 'Desk Mobility' || currentExerciseType === '7-Min Calisthenics') {
+        if (currentExerciseType === 'Desk Mobility' || currentExerciseType === '7-Min Daily Exercise') {
             if (phase === 'COUNTDOWN') {
                 if (countdownRemaining === state.countdown) {
-                    if (currentExerciseType === '7-Min Calisthenics') speak("Let's prepare for your calisthenics workout...");
+                    if (currentExerciseType === '7-Min Daily Exercise') speak("Let's prepare for your Daily Exercise workout...");
                     else speak("Let's prepare to stretch...");
                 }
                 DOM.sessionInstruction.textContent = `Prepare to stretch... ${countdownRemaining}s`;
@@ -722,7 +722,7 @@ const beginSession = () => {
                 const remainingInStage = mStage.duration - mobilityElapsed;
 
                 if (mStage.mobilityType !== 'rest' && !mStage.mobilityType.startsWith('setup-')) {
-                    if (currentExerciseType === '7-Min Calisthenics') {
+                    if (currentExerciseType === '7-Min Daily Exercise') {
                         DOM.sessionInstruction.textContent = mStage.name;
                         DOM.sessionTimerDisplay.style.display = 'block';
                         DOM.sessionTimerDisplay.textContent = remainingInStage;
@@ -739,13 +739,13 @@ const beginSession = () => {
                         DOM.sessionInstruction.style.top = 'calc(50% + 140px)';
                     }
                 }
-                
+
                 // Determine exercise count for stage info
-                let calisthenicsExerciseCount = 0;
-                if (currentExerciseType === '7-Min Calisthenics') {
-                    calisthenicsExerciseCount = state.stages.filter(s => s.mobilityType !== 'rest' && !s.mobilityType.startsWith('setup-')).length;
+                let dailyExerciseCount = 0;
+                if (currentExerciseType === '7-Min Daily Exercise') {
+                    dailyExerciseCount = state.stages.filter(s => s.mobilityType !== 'rest' && !s.mobilityType.startsWith('setup-')).length;
                     const currentExIndex = Math.floor(sIdx / 3) + 1; // setup, exercise, rest
-                    DOM.stageInfo.textContent = `Exercise ${Math.min(currentExIndex, calisthenicsExerciseCount)} of ${calisthenicsExerciseCount}`;
+                    DOM.stageInfo.textContent = `Exercise ${Math.min(currentExIndex, dailyExerciseCount)} of ${dailyExerciseCount}`;
                 } else {
                     DOM.stageInfo.textContent = `Exercise ${sIdx + 1} of ${state.stages.length}`;
                 }
@@ -753,15 +753,19 @@ const beginSession = () => {
                 if (mStage.mobilityType !== lastTriggeredPhase) {
                     if (mStage.mobilityType.startsWith('setup-')) {
                         speak(`Next is ${mStage.name}. ${mStage.instruction}`);
-                    } else if (currentExerciseType === '7-Min Calisthenics' && mStage.mobilityType === 'rest') {
+                    } else if (currentExerciseType === '7-Min Daily Exercise' && mStage.mobilityType === 'rest') {
                         speak("Rest for 20 seconds.");
+                    } else if (currentExerciseType === '7-Min Daily Exercise' && !mStage.mobilityType.startsWith('setup-') && mStage.mobilityType !== 'rest') {
+                        speak(`Let us begin.. ${mStage.name}`);
                     } else {
                         speak(mStage.name + ".");
                     }
                     lastTriggeredPhase = mStage.mobilityType;
+                } else if (mStage.mobilityType.startsWith('setup-') && !window.speechSynthesis.speaking && remainingInStage > 0) {
+                    speak(remainingInStage + "...");
                 } else if (remainingInStage <= 3 && remainingInStage > 0 && sIdx < state.stages.length - 1 && mStage.mobilityType !== 'rest' && !mStage.mobilityType.startsWith('setup-')) {
                     speak(remainingInStage + "...");
-                } else if (currentExerciseType === '7-Min Calisthenics' && mStage.mobilityType !== 'rest' && !mStage.mobilityType.startsWith('setup-')) {
+                } else if (currentExerciseType === '7-Min Daily Exercise' && mStage.mobilityType !== 'rest' && !mStage.mobilityType.startsWith('setup-')) {
                     if (remainingInStage === 20) {
                         speak("You're doing great, remember to breathe smoothly.");
                     } else if (remainingInStage === 10) {
@@ -779,7 +783,7 @@ const beginSession = () => {
                     clearMobilityAnim();
                     DOM.figArmL.classList.add('anim-reach');
                     DOM.figArmR.classList.add('anim-reach');
-                } else if (currentExerciseType === '7-Min Calisthenics' && mStage.mobilityType !== 'rest' && !mStage.mobilityType.startsWith('setup-') && !DOM.figGroup.classList.contains(`anim-${mStage.mobilityType}`)) {
+                } else if (currentExerciseType === '7-Min Daily Exercise' && mStage.mobilityType !== 'rest' && !mStage.mobilityType.startsWith('setup-') && !DOM.figGroup.classList.contains(`anim-${mStage.mobilityType}`)) {
                     clearMobilityAnim();
                     DOM.figGroup.classList.add(`anim-${mStage.mobilityType}`);
                 } else if (mStage.mobilityType === 'rest' || mStage.mobilityType.startsWith('setup-')) {
@@ -819,7 +823,7 @@ const beginSession = () => {
                         DOM.breathingCircle.style.display = 'block';
                         DOM.breathingCircle.style.transition = 'transform 1s ease';
                         DOM.breathingCircle.style.transform = 'scale(1)';
-                        DOM.sessionInstruction.textContent = `Next: ${mStage.name}`;
+                        DOM.sessionInstruction.textContent = `Next: ${ mStage.name } `;
                         DOM.sessionTimerDisplay.style.display = 'block';
                         DOM.sessionTimerDisplay.style.fontSize = '4.5rem';
                         DOM.sessionTimerDisplay.style.top = '50%';
@@ -835,279 +839,279 @@ const beginSession = () => {
                 }
             }
             DOM.sessionTotalTimer.textContent = `${formatTimeSpan(overallElapsed)} / ${formatTimeSpan(grandTotal)}`;
-            return;
-        }
-
-        if (phase === 'MICRO_BREAK_INTRO') {
-            const phrases = [
-                "Place your hand on your chest.",
-                "Think of a happy place.",
-                "Be grateful for this moment.",
-                "Thank yourself for taking this time.",
-                "Remember: you are good.",
-                "Remember: you are strong.",
-                "Remember: you are enough."
-            ];
-            const pIdx = Math.floor((60 - introRemaining) / (60 / phrases.length));
-            const currentPhrase = phrases[Math.min(pIdx, phrases.length - 1)];
-
-            DOM.sessionInstruction.textContent = currentPhrase;
-            DOM.sessionTimerDisplay.textContent = (60 - introRemaining) + 1;
-
-            if (lastTriggeredPhase !== currentPhrase) {
-                speak(currentPhrase);
-                lastTriggeredPhase = currentPhrase;
-            }
-
-            if (introRemaining <= 0) {
-                phase = 'COUNTDOWN';
-            } else {
-                introRemaining -= 1;
                 return;
             }
-        }
 
-        if (phase === 'COUNTDOWN') {
-            if (countdownRemaining === state.countdown) {
-                if (currentExerciseType === 'Creative Upgaze') speak('Tilt your head slightly up, and get ready.');
-                else if (currentExerciseType === 'Introspective Downgaze') speak('Tilt your head slightly down, and get ready.');
-                else speak('Get ready.');
+            if (phase === 'MICRO_BREAK_INTRO') {
+                const phrases = [
+                    "Place your hand on your chest.",
+                    "Think of a happy place.",
+                    "Be grateful for this moment.",
+                    "Thank yourself for taking this time.",
+                    "Remember: you are good.",
+                    "Remember: you are strong.",
+                    "Remember: you are enough."
+                ];
+                const pIdx = Math.floor((60 - introRemaining) / (60 / phrases.length));
+                const currentPhrase = phrases[Math.min(pIdx, phrases.length - 1)];
+
+                DOM.sessionInstruction.textContent = currentPhrase;
+                DOM.sessionTimerDisplay.textContent = (60 - introRemaining) + 1;
+
+                if (lastTriggeredPhase !== currentPhrase) {
+                    speak(currentPhrase);
+                    lastTriggeredPhase = currentPhrase;
+                }
+
+                if (introRemaining <= 0) {
+                    phase = 'COUNTDOWN';
+                } else {
+                    introRemaining -= 1;
+                    return;
+                }
             }
+
+            if (phase === 'COUNTDOWN') {
+                if (countdownRemaining === state.countdown) {
+                    if (currentExerciseType === 'Creative Upgaze') speak('Tilt your head slightly up, and get ready.');
+                    else if (currentExerciseType === 'Introspective Downgaze') speak('Tilt your head slightly down, and get ready.');
+                    else speak('Get ready.');
+                }
+
+                if (currentExerciseType === 'Creative Upgaze') {
+                    DOM.sessionInstruction.textContent = 'Tilt your head slightly up...';
+                } else if (currentExerciseType === 'Introspective Downgaze') {
+                    DOM.sessionInstruction.textContent = 'Tilt your head slightly down...';
+                } else {
+                    DOM.sessionInstruction.textContent = 'Get Ready...';
+                }
+                DOM.sessionTimerDisplay.textContent = (state.countdown - countdownRemaining) + 1;
+
+                if (countdownRemaining <= 0) {
+                    phase = 'INHALE';
+                } else {
+                    if (countdownRemaining <= 3) {
+                        speak(countdownRemaining.toString());
+                        if (currentExerciseType !== 'Desk Mobility' && currentExerciseType !== '7-Min Daily Exercise') playBeep(880, 'sine', 0.2);
+                    }
+                    countdownRemaining -= 1;
+                    return;
+                }
+            }
+
+            if (currentExerciseType === 'Rapid Eye Movement') {
+                DOM.sessionInstruction.textContent = 'Follow the dot. Breathe naturally.';
+                DOM.sessionTimerDisplay.textContent = '';
+                DOM.sessionTotalTimer.textContent = `${formatTimeSpan(overallElapsed)} / ${formatTimeSpan(grandTotal)}`;
+                DOM.stageInfo.textContent = `Bilateral Stimulation`;
+                DOM.breathingCircle.style.transform = 'scale(1)';
+
+                if (overallElapsed === 0 || (overallElapsed > 0 && stageElapsed === 0)) {
+                    speak('Follow the dot with your eyes. Breathe naturally.');
+                    if (currentExerciseType !== 'Desk Mobility' && currentExerciseType !== '7-Min Daily Exercise') playBeep(440, 'sine', 0.5);
+                }
+
+                overallElapsed++;
+                stageElapsed++;
+                if (overallElapsed >= grandTotal || stageElapsed >= state.stages[currentStageIdx].duration) {
+                    if (overallElapsed >= grandTotal) {
+                        stopSession(true);
+                        DOM.sessionInstruction.textContent = 'Session Complete';
+                        if (currentExerciseType !== 'Desk Mobility' && currentExerciseType !== '7-Min Daily Exercise') playBeep(523.25, 'sine', 1.0);
+                    } else {
+                        currentStageIdx++;
+                        stageElapsed = 0;
+                        phaseElapsed = 0;
+                        lastTriggeredPhase = null;
+                        phase = 'INHALE';
+                        currentExerciseType = state.stages[currentStageIdx].type;
+                        applyExerciseUIType(currentExerciseType);
+                        speak(`Moving to ${currentExerciseType}`);
+                    }
+                }
+                return;
+            }
+
+            if (currentExerciseType === 'Ocean Trance') {
+                DOM.sessionInstruction.textContent = 'Relax. Let the ocean waves wash over you.';
+                DOM.sessionTimerDisplay.textContent = '';
+                DOM.sessionTotalTimer.textContent = `${formatTimeSpan(overallElapsed)} / ${formatTimeSpan(grandTotal)}`;
+                DOM.stageInfo.textContent = `Ocean Trance`;
+
+                if (overallElapsed === 0 || (overallElapsed > 0 && stageElapsed === 0)) {
+                    speak('Relax. Let the ocean waves wash over you.');
+                }
+
+                if (stageElapsed % 16 === 0) {
+                    DOM.breathingCircle.style.transition = 'transform 8s ease-in-out';
+                    DOM.breathingCircle.style.transform = 'scale(1.2)';
+                    setOceanVolume(0.5, 8, 0.1); // Wave comes in
+                } else if (stageElapsed % 16 === 8) {
+                    DOM.breathingCircle.style.transition = 'transform 8s ease-in-out';
+                    DOM.breathingCircle.style.transform = 'scale(0.8)';
+                    setOceanVolume(0.1, 8, 0.5); // Wave goes out
+                }
+
+                overallElapsed++;
+                stageElapsed++;
+                if (overallElapsed >= grandTotal || stageElapsed >= state.stages[currentStageIdx].duration) {
+                    if (overallElapsed >= grandTotal) {
+                        stopSession(true);
+                        DOM.sessionInstruction.textContent = 'Session Complete';
+                        playBeep(523.25, 'sine', 1.0);
+                    } else {
+                        currentStageIdx++;
+                        stageElapsed = 0;
+                        phaseElapsed = 0;
+                        lastTriggeredPhase = null;
+                        phase = 'INHALE';
+                        currentExerciseType = state.stages[currentStageIdx].type;
+                        applyExerciseUIType(currentExerciseType);
+                        speak(`Moving to ${currentExerciseType}`);
+                    }
+                }
+                return;
+            }
+
+            const currentStage = state.stages[currentStageIdx];
+            DOM.sessionTotalTimer.textContent = `${formatTimeSpan(overallElapsed)} / ${formatTimeSpan(grandTotal)}`;
+
+            let subText = `In: ${currentStage.inhale}s`;
+            if (currentStage.hold > 0) subText += ` • Hold: ${currentStage.hold}s`;
+            subText += ` • Ex: ${currentStage.exhale}s`;
+            if (currentStage.hold2 > 0) subText += ` • Pause: ${currentStage.hold2}s`;
 
             if (currentExerciseType === 'Creative Upgaze') {
-                DOM.sessionInstruction.textContent = 'Tilt your head slightly up...';
+                DOM.stageInfo.textContent = `Tilt Head Up • ${subText}`;
             } else if (currentExerciseType === 'Introspective Downgaze') {
-                DOM.sessionInstruction.textContent = 'Tilt your head slightly down...';
+                DOM.stageInfo.textContent = `Tilt Head Down • ${subText}`;
             } else {
-                DOM.sessionInstruction.textContent = 'Get Ready...';
+                DOM.stageInfo.textContent = `Stage ${currentStageIdx + 1} (${subText})`;
             }
-            DOM.sessionTimerDisplay.textContent = (state.countdown - countdownRemaining) + 1;
 
-            if (countdownRemaining <= 0) {
+            if (phase === 'INHALE' && phaseElapsed >= currentStage.inhale) {
+                phase = currentStage.hold > 0 ? 'HOLD' : 'EXHALE';
+                phaseElapsed = 0;
+            } else if (phase === 'HOLD' && phaseElapsed >= currentStage.hold) {
+                phase = 'EXHALE';
+                phaseElapsed = 0;
+            } else if (phase === 'EXHALE' && phaseElapsed >= currentStage.exhale) {
+                phase = (currentStage.hold2 && currentStage.hold2 > 0) ? 'HOLD2' : 'INHALE';
+                phaseElapsed = 0;
+            } else if (phase === 'HOLD2' && phaseElapsed >= currentStage.hold2) {
                 phase = 'INHALE';
-            } else {
-                if (countdownRemaining <= 3) {
-                    speak(countdownRemaining.toString());
-                    if (currentExerciseType !== 'Desk Mobility' && currentExerciseType !== '7-Min Calisthenics') playBeep(880, 'sine', 0.2);
+                phaseElapsed = 0;
+            }
+
+            if (phase !== lastTriggeredPhase) {
+                if (phase === 'INHALE') {
+                    DOM.sessionInstruction.textContent = 'Inhale gently';
+                    if (!currentExerciseType.includes('Gaze') && !currentExerciseType.includes('Eye')) {
+                        DOM.breathingCircle.style.transition = `transform ${currentStage.inhale}s linear`;
+                        DOM.breathingCircle.style.transform = 'scale(1.8)';
+                    }
+                    speak("Inhale gently...");
+                    if (currentExerciseType !== 'Desk Mobility' && currentExerciseType !== '7-Min Daily Exercise') {
+                        playBeep(440, 'sine', 0.8);
+                        if (currentExerciseType !== 'Rapid Eye Movement') setOceanVolume(0.5, currentStage.inhale, 0);
+                    }
                 }
-                countdownRemaining -= 1;
-                return;
-            }
-        }
-
-        if (currentExerciseType === 'Rapid Eye Movement') {
-            DOM.sessionInstruction.textContent = 'Follow the dot. Breathe naturally.';
-            DOM.sessionTimerDisplay.textContent = '';
-            DOM.sessionTotalTimer.textContent = `${formatTimeSpan(overallElapsed)} / ${formatTimeSpan(grandTotal)}`;
-            DOM.stageInfo.textContent = `Bilateral Stimulation`;
-            DOM.breathingCircle.style.transform = 'scale(1)';
-
-            if (overallElapsed === 0 || (overallElapsed > 0 && stageElapsed === 0)) {
-                speak('Follow the dot with your eyes. Breathe naturally.');
-                if (currentExerciseType !== 'Desk Mobility' && currentExerciseType !== '7-Min Calisthenics') playBeep(440, 'sine', 0.5);
-            }
-
-            overallElapsed++;
-            stageElapsed++;
-            if (overallElapsed >= grandTotal || stageElapsed >= state.stages[currentStageIdx].duration) {
-                if (overallElapsed >= grandTotal) {
-                    stopSession(true);
-                    DOM.sessionInstruction.textContent = 'Session Complete';
-                    if (currentExerciseType !== 'Desk Mobility' && currentExerciseType !== '7-Min Calisthenics') playBeep(523.25, 'sine', 1.0);
-                } else {
-                    currentStageIdx++;
-                    stageElapsed = 0;
-                    phaseElapsed = 0;
-                    lastTriggeredPhase = null;
-                    phase = 'INHALE';
-                    currentExerciseType = state.stages[currentStageIdx].type;
-                    applyExerciseUIType(currentExerciseType);
-                    speak(`Moving to ${currentExerciseType}`);
+                else if (phase === 'HOLD' || phase === 'HOLD2') {
+                    DOM.sessionInstruction.textContent = 'Hold';
+                    if (!currentExerciseType.includes('Gaze') && !currentExerciseType.includes('Eye')) DOM.breathingCircle.style.transition = 'none';
+                    speak("And hold...");
+                    if (currentExerciseType !== 'Desk Mobility' && currentExerciseType !== '7-Min Daily Exercise') {
+                        playBeep(349, 'sine', 0.8);
+                        if (currentExerciseType !== 'Rapid Eye Movement') setOceanVolume(0, 0.5);
+                    }
                 }
-            }
-            return;
-        }
-
-        if (currentExerciseType === 'Ocean Trance') {
-            DOM.sessionInstruction.textContent = 'Relax. Let the ocean waves wash over you.';
-            DOM.sessionTimerDisplay.textContent = '';
-            DOM.sessionTotalTimer.textContent = `${formatTimeSpan(overallElapsed)} / ${formatTimeSpan(grandTotal)}`;
-            DOM.stageInfo.textContent = `Ocean Trance`;
-
-            if (overallElapsed === 0 || (overallElapsed > 0 && stageElapsed === 0)) {
-                speak('Relax. Let the ocean waves wash over you.');
-            }
-
-            if (stageElapsed % 16 === 0) {
-                DOM.breathingCircle.style.transition = 'transform 8s ease-in-out';
-                DOM.breathingCircle.style.transform = 'scale(1.2)';
-                setOceanVolume(0.5, 8, 0.1); // Wave comes in
-            } else if (stageElapsed % 16 === 8) {
-                DOM.breathingCircle.style.transition = 'transform 8s ease-in-out';
-                DOM.breathingCircle.style.transform = 'scale(0.8)';
-                setOceanVolume(0.1, 8, 0.5); // Wave goes out
-            }
-
-            overallElapsed++;
-            stageElapsed++;
-            if (overallElapsed >= grandTotal || stageElapsed >= state.stages[currentStageIdx].duration) {
-                if (overallElapsed >= grandTotal) {
-                    stopSession(true);
-                    DOM.sessionInstruction.textContent = 'Session Complete';
-                    playBeep(523.25, 'sine', 1.0);
-                } else {
-                    currentStageIdx++;
-                    stageElapsed = 0;
-                    phaseElapsed = 0;
-                    lastTriggeredPhase = null;
-                    phase = 'INHALE';
-                    currentExerciseType = state.stages[currentStageIdx].type;
-                    applyExerciseUIType(currentExerciseType);
-                    speak(`Moving to ${currentExerciseType}`);
+                else if (phase === 'EXHALE') {
+                    DOM.sessionInstruction.textContent = 'Exhale slowly';
+                    if (!currentExerciseType.includes('Gaze') && !currentExerciseType.includes('Eye')) {
+                        DOM.breathingCircle.style.transition = `transform ${currentStage.exhale}s linear`;
+                        DOM.breathingCircle.style.transform = 'scale(0.8)';
+                    }
+                    speak("Exhale slowly...");
+                    if (currentExerciseType !== 'Desk Mobility' && currentExerciseType !== '7-Min Daily Exercise') {
+                        playBeep(261, 'sine', 0.8);
+                        if (currentExerciseType !== 'Rapid Eye Movement') setOceanVolume(0, currentStage.exhale, 0.5);
+                    }
                 }
+                lastTriggeredPhase = phase;
             }
-            return;
-        }
 
-        const currentStage = state.stages[currentStageIdx];
-        DOM.sessionTotalTimer.textContent = `${formatTimeSpan(overallElapsed)} / ${formatTimeSpan(grandTotal)}`;
-
-        let subText = `In: ${currentStage.inhale}s`;
-        if (currentStage.hold > 0) subText += ` • Hold: ${currentStage.hold}s`;
-        subText += ` • Ex: ${currentStage.exhale}s`;
-        if (currentStage.hold2 > 0) subText += ` • Pause: ${currentStage.hold2}s`;
-
-        if (currentExerciseType === 'Creative Upgaze') {
-            DOM.stageInfo.textContent = `Tilt Head Up • ${subText}`;
-        } else if (currentExerciseType === 'Introspective Downgaze') {
-            DOM.stageInfo.textContent = `Tilt Head Down • ${subText}`;
-        } else {
-            DOM.stageInfo.textContent = `Stage ${currentStageIdx + 1} (${subText})`;
-        }
-
-        if (phase === 'INHALE' && phaseElapsed >= currentStage.inhale) {
-            phase = currentStage.hold > 0 ? 'HOLD' : 'EXHALE';
-            phaseElapsed = 0;
-        } else if (phase === 'HOLD' && phaseElapsed >= currentStage.hold) {
-            phase = 'EXHALE';
-            phaseElapsed = 0;
-        } else if (phase === 'EXHALE' && phaseElapsed >= currentStage.exhale) {
-            phase = (currentStage.hold2 && currentStage.hold2 > 0) ? 'HOLD2' : 'INHALE';
-            phaseElapsed = 0;
-        } else if (phase === 'HOLD2' && phaseElapsed >= currentStage.hold2) {
-            phase = 'INHALE';
-            phaseElapsed = 0;
-        }
-
-        if (phase !== lastTriggeredPhase) {
             if (phase === 'INHALE') {
-                DOM.sessionInstruction.textContent = 'Inhale gently';
-                if (!currentExerciseType.includes('Gaze') && !currentExerciseType.includes('Eye')) {
-                    DOM.breathingCircle.style.transition = `transform ${currentStage.inhale}s linear`;
-                    DOM.breathingCircle.style.transform = 'scale(1.8)';
-                }
-                speak("Inhale gently...");
-                if (currentExerciseType !== 'Desk Mobility' && currentExerciseType !== '7-Min Calisthenics') {
-                    playBeep(440, 'sine', 0.8);
-                    if (currentExerciseType !== 'Rapid Eye Movement') setOceanVolume(0.5, currentStage.inhale, 0);
+                DOM.sessionTimerDisplay.textContent = Math.min(currentStage.inhale, phaseElapsed + 1);
+            } else if (phase === 'HOLD') {
+                DOM.sessionTimerDisplay.textContent = Math.min(currentStage.hold, phaseElapsed + 1);
+            } else if (phase === 'EXHALE') {
+                DOM.sessionTimerDisplay.textContent = Math.min(currentStage.exhale, phaseElapsed + 1);
+            } else if (phase === 'HOLD2') {
+                DOM.sessionTimerDisplay.textContent = Math.min(currentStage.hold2, phaseElapsed + 1);
+            }
+
+            phaseElapsed++;
+            stageElapsed++;
+            overallElapsed++;
+
+            if (stageElapsed >= currentStage.duration) {
+                currentStageIdx++;
+                stageElapsed = 0;
+                phaseElapsed = 0;
+                lastTriggeredPhase = null;
+                phase = 'INHALE';
+
+                if (currentStageIdx >= state.stages.length) {
+                    stopSession(true);
+                    DOM.sessionInstruction.textContent = 'Session Complete';
+                    DOM.sessionTimerDisplay.textContent = '';
+                    speak("Session complete. Wonderfully done.");
+                    if (currentExerciseType !== 'Desk Mobility' && currentExerciseType !== '7-Min Daily Exercise') playBeep(523.25, 'sine', 1.0);
+                } else {
+                    // Compound exercise stage transition
+                    if (state.stages[currentStageIdx].type !== currentExerciseType) {
+                        currentExerciseType = state.stages[currentStageIdx].type;
+                        applyExerciseUIType(currentExerciseType);
+                        speak(`Moving to ${currentExerciseType}`);
+                        // Trigger countdown again for the new exercise
+                        phase = 'COUNTDOWN';
+                        countdownRemaining = state.countdown;
+                    }
                 }
             }
-            else if (phase === 'HOLD' || phase === 'HOLD2') {
-                DOM.sessionInstruction.textContent = 'Hold';
-                if (!currentExerciseType.includes('Gaze') && !currentExerciseType.includes('Eye')) DOM.breathingCircle.style.transition = 'none';
-                speak("And hold...");
-                if (currentExerciseType !== 'Desk Mobility' && currentExerciseType !== '7-Min Calisthenics') {
-                    playBeep(349, 'sine', 0.8);
-                    if (currentExerciseType !== 'Rapid Eye Movement') setOceanVolume(0, 0.5);
-                }
-            }
-            else if (phase === 'EXHALE') {
-                DOM.sessionInstruction.textContent = 'Exhale slowly';
-                if (!currentExerciseType.includes('Gaze') && !currentExerciseType.includes('Eye')) {
-                    DOM.breathingCircle.style.transition = `transform ${currentStage.exhale}s linear`;
-                    DOM.breathingCircle.style.transform = 'scale(0.8)';
-                }
-                speak("Exhale slowly...");
-                if (currentExerciseType !== 'Desk Mobility' && currentExerciseType !== '7-Min Calisthenics') {
-                    playBeep(261, 'sine', 0.8);
-                    if (currentExerciseType !== 'Rapid Eye Movement') setOceanVolume(0, currentStage.exhale, 0.5);
-                }
-            }
-            lastTriggeredPhase = phase;
+        };
+
+        tick();
+        engineInterval = setInterval(tick, 1000);
+    };
+
+    const stopSession = (completed = false) => {
+        state.sessionActive = false;
+        releaseWakeLock();
+        clearInterval(engineInterval);
+        stopWorkoutMusic();
+        window.speechSynthesis.cancel();
+        if (state.preset !== 'Desk Mobility' && state.preset !== '7-Min Daily Exercise') {
+            setOceanVolume(0, 1);
         }
-
-        if (phase === 'INHALE') {
-            DOM.sessionTimerDisplay.textContent = Math.min(currentStage.inhale, phaseElapsed + 1);
-        } else if (phase === 'HOLD') {
-            DOM.sessionTimerDisplay.textContent = Math.min(currentStage.hold, phaseElapsed + 1);
-        } else if (phase === 'EXHALE') {
-            DOM.sessionTimerDisplay.textContent = Math.min(currentStage.exhale, phaseElapsed + 1);
-        } else if (phase === 'HOLD2') {
-            DOM.sessionTimerDisplay.textContent = Math.min(currentStage.hold2, phaseElapsed + 1);
+        DOM.breathingCircle.style.display = 'block';
+        if (DOM.mobilityFigure) DOM.mobilityFigure.style.display = 'none';
+        DOM.breathingCircle.style.transition = `transform 0.5s ease`;
+        DOM.breathingCircle.style.transform = 'scale(1)';
+        DOM.sessionTimerDisplay.textContent = '';
+        if (DOM.sessionContent) {
+            DOM.sessionContent.style.transform = `translateY(0px)`;
         }
+        DOM.eyeDot.className = 'eye-dot';
+        DOM.postureReminder.className = 'posture-reminder';
+        DOM.activeSession.classList.remove('active');
 
-        phaseElapsed++;
-        stageElapsed++;
-        overallElapsed++;
-
-        if (stageElapsed >= currentStage.duration) {
-            currentStageIdx++;
-            stageElapsed = 0;
-            phaseElapsed = 0;
-            lastTriggeredPhase = null;
-            phase = 'INHALE';
-
-            if (currentStageIdx >= state.stages.length) {
-                stopSession(true);
-                DOM.sessionInstruction.textContent = 'Session Complete';
-                DOM.sessionTimerDisplay.textContent = '';
-                speak("Session complete. Wonderfully done.");
-                if (currentExerciseType !== 'Desk Mobility' && currentExerciseType !== '7-Min Calisthenics') playBeep(523.25, 'sine', 1.0);
-            } else {
-                // Compound exercise stage transition
-                if (state.stages[currentStageIdx].type !== currentExerciseType) {
-                    currentExerciseType = state.stages[currentStageIdx].type;
-                    applyExerciseUIType(currentExerciseType);
-                    speak(`Moving to ${currentExerciseType}`);
-                    // Trigger countdown again for the new exercise
-                    phase = 'COUNTDOWN';
-                    countdownRemaining = state.countdown;
-                }
-            }
+        if (completed) {
+            DOM.postSession.classList.add('active');
+        } else {
+            DOM.landingView.classList.add('active');
         }
     };
 
-    tick();
-    engineInterval = setInterval(tick, 1000);
-};
-
-const stopSession = (completed = false) => {
-    state.sessionActive = false;
-    releaseWakeLock();
-    clearInterval(engineInterval);
-    stopWorkoutMusic();
-    window.speechSynthesis.cancel();
-    if (state.preset !== 'Desk Mobility' && state.preset !== '7-Min Calisthenics') {
-        setOceanVolume(0, 1);
-    }
-    DOM.breathingCircle.style.display = 'block';
-    if (DOM.mobilityFigure) DOM.mobilityFigure.style.display = 'none';
-    DOM.breathingCircle.style.transition = `transform 0.5s ease`;
-    DOM.breathingCircle.style.transform = 'scale(1)';
-    DOM.sessionTimerDisplay.textContent = '';
-    if (DOM.sessionContent) {
-        DOM.sessionContent.style.transform = `translateY(0px)`;
-    }
-    DOM.eyeDot.className = 'eye-dot';
-    DOM.postureReminder.className = 'posture-reminder';
-    DOM.activeSession.classList.remove('active');
-
-    if (completed) {
-        DOM.postSession.classList.add('active');
-    } else {
-        DOM.landingView.classList.add('active');
-    }
-};
-
-DOM.stopBtn.addEventListener('click', () => stopSession(false));
-DOM.earlyFinishBtn.addEventListener('click', () => stopSession(true));
+    DOM.stopBtn.addEventListener('click', () => stopSession(false));
+    DOM.earlyFinishBtn.addEventListener('click', () => stopSession(true));
