@@ -903,3 +903,106 @@ input[type=range]::-webkit-slider-thumb:hover {
     font-size: 0.75rem;
   }
 }
+
+/* Calisthenics Animations */
+.anim-jumping-jacks .fig-legl, .anim-jumping-jacks .fig-legr,
+.anim-wall-sit .fig-legl, .anim-wall-sit .fig-legr,
+.anim-pushups .fig-legl, .anim-pushups .fig-legr,
+.anim-crunches .fig-legl, .anim-crunches .fig-legr,
+.anim-step-ups .fig-legl, .anim-step-ups .fig-legr,
+.anim-squats .fig-legl, .anim-squats .fig-legr,
+.anim-triceps-dips .fig-legl, .anim-triceps-dips .fig-legr,
+.anim-plank .fig-legl, .anim-plank .fig-legr,
+.anim-high-knees .fig-legl, .anim-high-knees .fig-legr,
+.anim-lunges .fig-legl, .anim-lunges .fig-legr,
+.anim-pushup-rotation .fig-legl, .anim-pushup-rotation .fig-legr,
+.anim-side-plank .fig-legl, .anim-side-plank .fig-legr {
+  transform-origin: 50px 65px;
+}
+
+/* Jumping Jacks */
+@keyframes jj-arml { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(160deg); } }
+@keyframes jj-armr { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-160deg); } }
+@keyframes jj-legl { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(30deg); } }
+@keyframes jj-legr { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-30deg); } }
+.anim-jumping-jacks .fig-arml { animation: jj-arml 1s infinite; }
+.anim-jumping-jacks .fig-armr { animation: jj-armr 1s infinite; }
+.anim-jumping-jacks .fig-legl { animation: jj-legl 1s infinite; }
+.anim-jumping-jacks .fig-legr { animation: jj-legr 1s infinite; }
+
+/* Wall Sit */
+.anim-wall-sit { transform: translateY(20px); }
+.anim-wall-sit .fig-legl, .anim-wall-sit .fig-legr { transform: rotate(-90deg); }
+.anim-wall-sit .fig-arml, .anim-wall-sit .fig-armr { transform: rotate(45deg); }
+
+/* Push-ups */
+@keyframes pushup-group { 
+  0%, 100% { transform: rotate(85deg) translateY(20px); } 
+  50% { transform: rotate(95deg) translateY(45px); } 
+}
+@keyframes pushup-arml { 0%, 100% { transform: rotate(-20deg); } 50% { transform: rotate(-80deg); } }
+@keyframes pushup-armr { 0%, 100% { transform: rotate(20deg); } 50% { transform: rotate(80deg); } }
+.anim-pushups { transform-origin: 50px 95px; animation: pushup-group 2s infinite ease-in-out; }
+.anim-pushups .fig-arml { animation: pushup-arml 2s infinite ease-in-out; }
+.anim-pushups .fig-armr { animation: pushup-armr 2s infinite ease-in-out; }
+.anim-pushups .fig-legl, .anim-pushups .fig-legr { transform: rotate(-5deg); }
+
+/* Crunches */
+@keyframes crunch-torso { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-30deg); } }
+@keyframes crunch-head { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-40deg) translateY(-5px); } }
+@keyframes crunch-arm { 0%, 100% { transform: rotate(150deg); } 50% { transform: rotate(120deg); } }
+.anim-crunches { transform: translateY(20px) rotate(90deg); }
+.anim-crunches .fig-legl, .anim-crunches .fig-legr { transform: rotate(-90deg); }
+.anim-crunches .fig-torso { transform-origin: 50px 65px; animation: crunch-torso 2s infinite ease-in-out; }
+.anim-crunches .fig-head { transform-origin: 50px 65px; animation: crunch-head 2s infinite ease-in-out; }
+.anim-crunches .fig-arml, .anim-crunches .fig-armr { transform-origin: 50px 65px; animation: crunch-arm 2s infinite ease-in-out; }
+
+/* Step-ups */
+@keyframes stepup-legl { 0%, 100% { transform: rotate(0deg); } 25%, 75% { transform: rotate(-90deg); } }
+@keyframes stepup-legr { 0%, 50%, 100% { transform: rotate(0deg); } 75% { transform: rotate(-90deg); } }
+.anim-step-ups .fig-legl { animation: stepup-legl 2s infinite; }
+.anim-step-ups .fig-legr { animation: stepup-legr 2s infinite; }
+
+/* Squats */
+@keyframes squat-group { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(20px); } }
+@keyframes squat-leg { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-60deg); } }
+@keyframes squat-arm { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(90deg); } }
+.anim-squats { animation: squat-group 2s infinite; }
+.anim-squats .fig-legl, .anim-squats .fig-legr { animation: squat-leg 2s infinite; }
+.anim-squats .fig-arml, .anim-squats .fig-armr { animation: squat-arm 2s infinite; }
+
+/* Triceps Dips */
+@keyframes dip-group { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(15px); } }
+@keyframes dip-arm { 0%, 100% { transform: rotate(-135deg); } 50% { transform: rotate(-90deg); } }
+.anim-triceps-dips { animation: dip-group 2s infinite; }
+.anim-triceps-dips .fig-legl, .anim-triceps-dips .fig-legr { transform: rotate(-90deg); }
+.anim-triceps-dips .fig-arml, .anim-triceps-dips .fig-armr { animation: dip-arm 2s infinite; }
+
+/* Plank */
+.anim-plank { transform: rotate(90deg) translateY(-20px); }
+.anim-plank .fig-arml, .anim-plank .fig-armr { transform: rotate(-90deg); }
+
+/* High Knees */
+@keyframes highknee-legl { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-90deg); } }
+@keyframes highknee-legr { 0%, 50%, 100% { transform: rotate(0deg); } 25%, 75% { transform: rotate(-90deg); } }
+.anim-high-knees .fig-legl { animation: highknee-legl 1s infinite; }
+.anim-high-knees .fig-legr { animation: highknee-legr 1s infinite; }
+
+/* Lunges */
+@keyframes lunge-group { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(15px); } }
+@keyframes lunge-legl { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-90deg); } }
+@keyframes lunge-legr { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(45deg); } }
+.anim-lunges { animation: lunge-group 2s infinite; }
+.anim-lunges .fig-legl { animation: lunge-legl 2s infinite; }
+.anim-lunges .fig-legr { animation: lunge-legr 2s infinite; }
+
+/* Push-up Rotation */
+@keyframes pushuprot-group { 0%, 100% { transform: rotate(90deg) translateY(0); } 50% { transform: rotate(60deg) translateY(10px); } }
+.anim-pushup-rotation { animation: pushuprot-group 3s infinite; }
+.anim-pushup-rotation .fig-arml { transform: rotate(-45deg); }
+.anim-pushup-rotation .fig-armr { animation: jj-armr 3s infinite; }
+
+/* Side Plank */
+.anim-side-plank { transform: rotate(60deg) translateY(-10px); }
+.anim-side-plank .fig-arml { transform: rotate(-90deg); }
+.anim-side-plank .fig-armr { transform: rotate(180deg); }
