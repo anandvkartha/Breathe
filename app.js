@@ -466,10 +466,10 @@ const startWorkoutMusic = () => {
         osc.connect(gain);
         gain.connect(audioCtx.destination);
 
-        osc.frequency.setValueAtTime(150, time);
-        osc.frequency.exponentialRampToValueAtTime(0.001, time + 0.5);
+        osc.frequency.setValueAtTime(400, time); // Higher frequency click for mobile audibility
+        osc.frequency.exponentialRampToValueAtTime(50, time + 0.1);
 
-        gain.gain.setValueAtTime((state.volume / 100) * 0.4, time);
+        gain.gain.setValueAtTime((state.volume / 100) * 0.8, time); // Increased volume
         gain.gain.exponentialRampToValueAtTime(0.001, time + 0.5);
 
         osc.start(time);
@@ -483,13 +483,13 @@ const startWorkoutMusic = () => {
 
         osc.type = 'square';
         filter.type = 'highpass';
-        filter.frequency.value = 8000;
+        filter.frequency.value = 6000; // slightly lower highpass
 
         osc.connect(filter);
         filter.connect(gain);
         gain.connect(audioCtx.destination);
 
-        gain.gain.setValueAtTime((state.volume / 100) * 0.05, time);
+        gain.gain.setValueAtTime((state.volume / 100) * 0.15, time); // Increased volume
         gain.gain.exponentialRampToValueAtTime(0.001, time + 0.05);
 
         osc.start(time);
@@ -503,16 +503,16 @@ const startWorkoutMusic = () => {
 
         osc.type = 'sawtooth';
         filter.type = 'lowpass';
-        filter.frequency.setValueAtTime(400, time);
-        filter.frequency.exponentialRampToValueAtTime(50, time + 0.2);
+        filter.frequency.setValueAtTime(800, time); // Open filter more to let harmonics through
+        filter.frequency.exponentialRampToValueAtTime(100, time + 0.2);
 
         osc.connect(filter);
         filter.connect(gain);
         gain.connect(audioCtx.destination);
 
-        osc.frequency.value = freq;
+        osc.frequency.value = freq * 2; // Shift up one octave for mobile speakers
 
-        gain.gain.setValueAtTime((state.volume / 100) * 0.1, time);
+        gain.gain.setValueAtTime((state.volume / 100) * 0.15, time);
         gain.gain.exponentialRampToValueAtTime(0.001, time + 0.2);
 
         osc.start(time);
@@ -520,7 +520,7 @@ const startWorkoutMusic = () => {
     };
 
     let beatCount = 0;
-    const bassSequence = [55, 55, 55, 55, 65, 65, 55, 55, 41, 41, 41, 41, 49, 49, 49, 49]; // Bassline pattern
+    const bassSequence = [55, 55, 55, 55, 65, 65, 55, 55, 41, 41, 41, 41, 49, 49, 49, 49]; // Base pattern
 
     if (workoutInterval) clearInterval(workoutInterval);
     workoutInterval = setInterval(() => {
