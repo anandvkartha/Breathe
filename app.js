@@ -64,6 +64,17 @@ const PRESETS = {
         { duration: 20, type: '7-Min Daily Exercise', mobilityType: 'rest', name: 'Rest' },
         { duration: 15, type: '7-Min Daily Exercise', mobilityType: 'setup-side-plank', name: 'Side Plank', instruction: 'Lie on your side, prop up on one forearm, body straight.' },
         { duration: 30, type: '7-Min Daily Exercise', mobilityType: 'side-plank', name: 'Side Plank' }
+    ],
+    'NSDR': [
+        { duration: 60, type: 'NSDR', mobilityType: 'setup', name: 'Preparation', instruction: 'Lie down on your back in a comfortable position. Close your eyes, and let your arms rest by your sides.' },
+        { duration: 60, type: 'NSDR', mobilityType: 'breathe', name: 'Deep Breathing', instruction: 'Take a deep breath in... and exhale slowly. Let your body sink into the surface beneath you.' },
+        { duration: 60, type: 'NSDR', mobilityType: 'scan-feet', name: 'Body Scan: Feet', instruction: 'Bring your attention to your feet. Notice any sensations. Let them completely relax.' },
+        { duration: 60, type: 'NSDR', mobilityType: 'scan-legs', name: 'Body Scan: Legs', instruction: 'Move your focus to your lower legs, knees, and thighs. Feel them becoming heavy and relaxed.' },
+        { duration: 60, type: 'NSDR', mobilityType: 'scan-torso', name: 'Body Scan: Torso', instruction: 'Notice your abdomen and chest. With every exhale, release any tension held in your torso.' },
+        { duration: 60, type: 'NSDR', mobilityType: 'scan-arms', name: 'Body Scan: Arms', instruction: 'Shift your attention to your hands, arms, and shoulders. Let them melt into the floor.' },
+        { duration: 60, type: 'NSDR', mobilityType: 'scan-head', name: 'Body Scan: Head', instruction: 'Bring awareness to your neck, face, and jaw. Soften all the muscles around your eyes.' },
+        { duration: 120, type: 'NSDR', mobilityType: 'drift', name: 'Deep Rest', instruction: 'You are now in a state of deep rest. Allow your mind to drift. There is nothing to do, nowhere to be.' },
+        { duration: 60, type: 'NSDR', mobilityType: 'awaken', name: 'Awakening', instruction: 'Slowly bring your awareness back to your body. Gently move your fingers and toes.' }
     ]
 };
 
@@ -100,7 +111,7 @@ const DOM = {
     sessionInstruction: document.getElementById('session-instruction'),
     sessionTimerDisplay: document.getElementById('session-timer-display'),
     stageInfo: document.getElementById('stage-info'),
-    sessionTotalTimer: document.getElementById('session-total-timer'),
+    sessionTotalTimer: document.getElementById('session-total-timer')
 };
 
 const formatTime = (seconds) => {
@@ -262,6 +273,14 @@ const PRESET_EXPLANATIONS = {
             'Scientifically designed to provide maximum benefits in minimal time',
             'Combines aerobic and resistance training for full-body engagement',
             'Improves cardiovascular health and muscle tone quickly'
+        ]
+    },
+    'NSDR': {
+        title: 'Why use NSDR?',
+        points: [
+            'Non-Sleep Deep Rest restores energy and focus without requiring sleep',
+            'Guides the brain and body into deep relaxation',
+            'Clinically supported tool to reduce stress and anxiety'
         ]
     }
 };
@@ -542,6 +561,75 @@ const stopWorkoutMusic = () => {
     if (workoutInterval) clearInterval(workoutInterval);
 };
 
+let calmingMusicInterval;
+const startCalmingMusic = () => {
+    if (state.volume <= 0 || state.sound === 'Off') return;
+    initAudio();
+    const bpm = 60;
+    const beatDuration = 60 / bpm;
+    let nextNoteTime = audioCtx.currentTime + 0.1;
+
+    const playHeartbeat = (time) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.frequency.setValueAtTime(120, time);
+        osc.frequency.exponentialRampToValueAtTime(30, time + 0.2);
+
+        gain.gain.setValueAtTime((state.volume / 100) * 0.4, time);
+        gain.gain.exponentialRampToValueAtTime(0.001, time + 0.2);
+
+        osc.start(time);
+        osc.stop(time + 0.2);
+    };
+
+    const playPad = (time, freq) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0, time);
+        gain.gain.linearRampToValueAtTime((state.volume / 100) * 0.15, time + 2);
+        gain.gain.linearRampToValueAtTime(0, time + 4);
+
+        osc.start(time);
+        osc.stop(time + 4);
+    };
+
+    let beatCount = 0;
+    const chords = [
+        [261.63, 329.63, 392.00], // C major
+        [220.00, 261.63, 329.63], // A minor
+        [174.61, 220.00, 261.63], // F major
+        [196.00, 246.94, 293.66]  // G major
+    ];
+
+    if (calmingMusicInterval) clearInterval(calmingMusicInterval);
+    calmingMusicInterval = setInterval(() => {
+        while (nextNoteTime < audioCtx.currentTime + 0.1) {
+            playHeartbeat(nextNoteTime);
+            playHeartbeat(nextNoteTime + 0.3); // "Lub-dub" heartbeat effect
+
+            if (beatCount % 4 === 0) {
+                const chord = chords[(beatCount / 4) % chords.length];
+                chord.forEach(freq => playPad(nextNoteTime, freq));
+            }
+
+            nextNoteTime += beatDuration;
+            beatCount++;
+        }
+    }, 50);
+};
+
+const stopCalmingMusic = () => {
+    if (calmingMusicInterval) clearInterval(calmingMusicInterval);
+};
+
 const setOceanVolume = (targetVolume, transitionTime = 1, startVolume = null) => {
     if (!audioCtx) return;
 
@@ -558,7 +646,7 @@ const setOceanVolume = (targetVolume, transitionTime = 1, startVolume = null) =>
 };
 
 const speak = (text) => {
-    if (state.preset !== 'Desk Mobility' && state.preset !== '7-Min Daily Exercise') return;
+    if (state.preset !== 'Desk Mobility' && state.preset !== '7-Min Daily Exercise' && state.preset !== 'NSDR') return;
     if (state.volume <= 0) return;
     if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
 
@@ -593,6 +681,9 @@ const beginSession = () => {
         initAudio();
         if (state.preset === 'Rapid Eye Movement') {
             setOceanVolume(0.5, 2);
+        } else if (state.preset === 'NSDR') {
+            setOceanVolume(0, 0.1); 
+            startCalmingMusic();
         } else {
             setOceanVolume(0, 0.1); // silence during warmup
         }
@@ -621,8 +712,23 @@ const beginSession = () => {
 
         const isStaticGaze = exerciseType.includes('Gaze') || exerciseType.includes('Eye');
         const isMobility = exerciseType === 'Desk Mobility' || exerciseType === '7-Min Daily Exercise';
+        const isNSDR = exerciseType === 'NSDR';
 
-        if (isMobility) {
+        if (isNSDR) {
+            DOM.breathingCircle.style.display = 'block';
+            DOM.breathingCircle.style.transition = 'transform 2s ease';
+            DOM.breathingCircle.style.transform = 'scale(0.8)';
+            DOM.sessionTimerDisplay.style.display = 'block';
+            DOM.sessionTimerDisplay.style.fontSize = '4.5rem';
+            DOM.sessionTimerDisplay.style.top = '50%'; 
+            DOM.sessionInstruction.style.display = 'block';
+            DOM.sessionInstruction.style.top = 'calc(50% + 140px)';
+            DOM.eyeDot.className = 'eye-dot';
+            if (DOM.mobilityFigure) DOM.mobilityFigure.style.display = 'none';
+        } else if (isMobility) {
+            if (DOM.nsdrContainer) DOM.nsdrContainer.style.display = 'none';
+            if (DOM.nsdrIframe) DOM.nsdrIframe.src = '';
+            DOM.sessionInstruction.style.display = 'block';
             if (DOM.mobilityFigure) {
                 DOM.mobilityFigure.style.display = 'flex';
                 DOM.mobilityFigure.style.opacity = '1';
@@ -633,6 +739,12 @@ const beginSession = () => {
             DOM.sessionInstruction.style.top = 'calc(50% + 140px)';
             DOM.eyeDot.className = 'eye-dot';
         } else {
+            if (DOM.nsdrContainer) DOM.nsdrContainer.style.display = 'none';
+            if (DOM.nsdrCredit) DOM.nsdrCredit.style.display = 'none';
+            if (window.nsdrPlayer && typeof window.nsdrPlayer.pauseVideo === 'function') {
+                window.nsdrPlayer.pauseVideo();
+            }
+            DOM.sessionInstruction.style.display = 'block';
             DOM.breathingCircle.style.display = 'block';
             DOM.sessionTimerDisplay.style.display = 'block';
             DOM.sessionTimerDisplay.textContent = '';
@@ -685,10 +797,11 @@ const beginSession = () => {
     const tick = () => {
         if (!state.sessionActive) return clearInterval(engineInterval);
 
-        if (currentExerciseType === 'Desk Mobility' || currentExerciseType === '7-Min Daily Exercise') {
+        if (currentExerciseType === 'Desk Mobility' || currentExerciseType === '7-Min Daily Exercise' || currentExerciseType === 'NSDR') {
             if (phase === 'COUNTDOWN') {
                 if (countdownRemaining === state.countdown) {
                     if (currentExerciseType === '7-Min Daily Exercise') speak("Let's prepare for your Daily Exercise workout...");
+                    else if (currentExerciseType === 'NSDR') speak("Let's prepare for Non Sleep Deep Rest...");
                     else speak("Let's prepare to stretch...");
                 }
                 DOM.sessionInstruction.textContent = `Prepare to stretch... ${countdownRemaining}s`;
@@ -733,6 +846,13 @@ const beginSession = () => {
                             DOM.mobilityFigure.style.display = 'flex';
                             DOM.mobilityFigure.style.opacity = '1';
                         }
+                    } else if (currentExerciseType === 'NSDR') {
+                        DOM.sessionInstruction.textContent = mStage.name;
+                        DOM.sessionTimerDisplay.style.display = 'block';
+                        DOM.sessionTimerDisplay.textContent = remainingInStage;
+                        DOM.sessionTimerDisplay.style.fontSize = '4.5rem';
+                        DOM.sessionTimerDisplay.style.top = 'calc(50% - 100px)';
+                        DOM.sessionInstruction.style.top = 'calc(50% + 140px)';
                     } else {
                         DOM.sessionInstruction.textContent = `${mStage.name} — ${remainingInStage}s`;
                         DOM.sessionTimerDisplay.textContent = '';
@@ -746,12 +866,16 @@ const beginSession = () => {
                     dailyExerciseCount = state.stages.filter(s => s.mobilityType !== 'rest' && !s.mobilityType.startsWith('setup-')).length;
                     const currentExIndex = Math.floor(sIdx / 3) + 1; // setup, exercise, rest
                     DOM.stageInfo.textContent = `Exercise ${Math.min(currentExIndex, dailyExerciseCount)} of ${dailyExerciseCount}`;
+                } else if (currentExerciseType === 'NSDR') {
+                    DOM.stageInfo.textContent = `Phase ${sIdx + 1} of ${state.stages.length}`;
                 } else {
                     DOM.stageInfo.textContent = `Exercise ${sIdx + 1} of ${state.stages.length}`;
                 }
 
                 if (mStage.mobilityType !== lastTriggeredPhase) {
-                    if (mStage.mobilityType.startsWith('setup-')) {
+                    if (currentExerciseType === 'NSDR') {
+                        speak(mStage.instruction);
+                    } else if (mStage.mobilityType.startsWith('setup-')) {
                         speak(`Next is ${mStage.name}. ${mStage.instruction}`);
                     } else if (currentExerciseType === '7-Min Daily Exercise' && mStage.mobilityType === 'rest') {
                         speak("Rest for 20 seconds.");
@@ -1090,6 +1214,7 @@ const beginSession = () => {
         releaseWakeLock();
         clearInterval(engineInterval);
         stopWorkoutMusic();
+        if (typeof stopCalmingMusic === 'function') stopCalmingMusic();
         window.speechSynthesis.cancel();
         if (state.preset !== 'Desk Mobility' && state.preset !== '7-Min Daily Exercise') {
             setOceanVolume(0, 1);
@@ -1105,6 +1230,8 @@ const beginSession = () => {
         DOM.eyeDot.className = 'eye-dot';
         DOM.postureReminder.className = 'posture-reminder';
         DOM.activeSession.classList.remove('active');
+
+        DOM.sessionInstruction.style.display = 'block';
 
         if (completed) {
             DOM.postSession.classList.add('active');
