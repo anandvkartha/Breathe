@@ -5,7 +5,1403 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Breathe</title>
-  <link rel="stylesheet" href="styles.css?v=2">
+<style>
+:root {
+  --bg-color: #202124;
+  --panel-bg: #292a2d;
+  --text-main: #e8eaed;
+  --text-muted: #9aa0a6;
+  --text-dim: #bdc1c6;
+  --border-color: #3c4043;
+  --border-color-light: #5f6368;
+  --accent-blue: #8ab4f8;
+  --accent-blue-hover: #aecbfa;
+  --accent-blue-bg: rgba(138, 180, 248, 0.16);
+  --chip-bg: transparent;
+  --chip-hover: rgba(232, 234, 237, 0.08);
+  --shadow-panel: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 4px 8px 3px rgba(0, 0, 0, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  width: 100%;
+  max-width: 850px;
+  padding: 2rem;
+}
+
+.view {
+  display: none;
+  animation: viewFadeIn 0.3s ease-out forwards;
+  opacity: 0;
+}
+
+.view.active {
+  display: block;
+}
+
+@keyframes viewFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Configurator Styles */
+.glow-container {
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: none;
+}
+
+#active-session {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+#landing-view>div:first-child,
+#landing-view .minimal-section,
+#landing-view #begin-session-btn {
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.tab-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.25rem;
+  border-radius: 20px;
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 0.5rem 1.25rem;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+  background: var(--chip-hover);
+  color: var(--text-main);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tab-content {
+  display: none;
+  animation: viewFadeIn 0.3s ease-out forwards;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.vertical-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.vertical-list .chip {
+  text-align: left;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  background: transparent;
+  border: 1px solid transparent;
+  width: 100%;
+  font-size: 0.95rem;
+}
+
+.vertical-list .chip:hover {
+  background: var(--chip-hover);
+  border-color: transparent;
+}
+
+.vertical-list .chip.active {
+  background: var(--accent-blue-bg);
+  border-color: transparent;
+  color: var(--accent-blue);
+  font-weight: 600;
+  border-left: 3px solid var(--accent-blue);
+  border-radius: 4px;
+}
+
+.vertical-list .chip.active:hover {
+  background: rgba(138, 180, 248, 0.24);
+}
+
+.minimal-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 2rem;
+}
+
+.minimal-section span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.minimal-chips .chip {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+}
+
+.chip {
+  background: var(--chip-bg);
+  border: 1px solid var(--border-color-light);
+  color: var(--text-main);
+  padding: 0.4rem 1rem;
+  border-radius: 16px;
+  /* Pill shape */
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-family: inherit;
+}
+
+.chip:hover {
+  background: var(--chip-hover);
+}
+
+.chip.active {
+  color: #8ab4f8;
+  background: rgba(138, 180, 248, 0.08);
+  /* Subtler blue bg */
+  border-color: #8ab4f8;
+}
+
+.chip.active-blue {
+  background: var(--accent-blue-bg);
+  border-color: transparent;
+  color: var(--accent-blue);
+}
+
+.chip.active-blue:hover {
+  background: rgba(138, 180, 248, 0.24);
+}
+
+.helper-text {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+/* Volume Slider */
+.volume-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.volume-section label {
+  margin-bottom: 0;
+  width: 60px;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 1rem;
+}
+
+input[type=range] {
+  flex: 1;
+  -webkit-appearance: none;
+  background: var(--border-color-light);
+  height: 4px;
+  border-radius: 2px;
+  outline: none;
+  transition: background 0.3s;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 8px var(--accent-blue-bg);
+}
+
+#volume-value {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-main);
+  min-width: 30px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Stages */
+.stages-header {
+  display: flex;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 0.25rem;
+}
+
+.stages-header span {
+  flex: 1;
+  text-align: center;
+}
+
+.stages-header .col-stage {
+  flex: 1.5;
+  text-align: left;
+}
+
+#stages-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Stage Row */
+.stage-row {
+  display: flex;
+  align-items: center;
+  font-size: 0.85rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.stage-row:last-child {
+  border-bottom: none;
+}
+
+.stage-name {
+  flex: 1.5;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.stage-control {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  border-radius: 4px;
+  padding: 4px;
+  margin: 0 2px;
+}
+
+.stage-control button {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.1rem;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s;
+}
+
+.stage-control button:hover {
+  color: var(--text-main);
+  background: var(--chip-hover);
+}
+
+.stage-control span {
+  width: 26px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.remove-stage-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.25rem;
+  margin-left: 0.5rem;
+  padding: 0 0.25rem;
+  transition: color 0.2s;
+}
+
+.remove-stage-btn:hover {
+  color: #f28b82;
+}
+
+.stages-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border-color-light);
+  color: var(--accent-blue);
+  padding: 0.4rem 1rem;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-outline:hover {
+  background: rgba(138, 180, 248, 0.08);
+}
+
+.total-time {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.btn-primary {
+  width: 100%;
+  background: var(--accent-blue);
+  color: #202124;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  margin-top: 1.5rem;
+}
+
+.btn-primary:hover {
+  background: var(--accent-blue-hover);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5), 0 2px 6px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Active Session View */
+#active-session {
+  height: 80vh;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  background: transparent;
+  border-radius: 12px;
+  box-shadow: none;
+  padding: 2rem;
+  border: none;
+}
+
+#active-session.active {
+  display: flex;
+}
+
+.session-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-icon {
+  background: transparent;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 1.75rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-icon:hover {
+  background: var(--chip-hover);
+  color: var(--text-main);
+}
+
+.breathing-area {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.circle {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: var(--accent-blue-bg);
+  border: 2px solid var(--accent-blue);
+  position: absolute;
+  transition: transform 1s ease-in-out;
+  transform: scale(1);
+}
+
+.session-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.instruction-text {
+  position: absolute;
+  top: calc(50% + 240px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--text-main);
+}
+
+.session-timer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4.5rem;
+  font-weight: 300;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-blue);
+  line-height: 1;
+}
+
+.eye-dot {
+  width: 24px;
+  height: 24px;
+  background: var(--accent-blue);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  box-shadow: 0 0 15px rgba(138, 180, 248, 0.8);
+  z-index: 5;
+}
+
+@keyframes emdrSweep {
+  0% {
+    left: 10%;
+  }
+
+  50% {
+    left: 90%;
+  }
+
+  100% {
+    left: 10%;
+  }
+}
+
+.eye-dot.active {
+  display: block;
+  animation: emdrSweep 1.3s ease-in-out infinite;
+}
+
+@keyframes upgazeDrift {
+  0% {
+    left: 30%;
+  }
+
+  50% {
+    left: 70%;
+  }
+
+  100% {
+    left: 30%;
+  }
+}
+
+.eye-dot.upgaze {
+  display: block;
+  top: 15%;
+  animation: upgazeDrift 6s ease-in-out infinite;
+}
+
+@keyframes pulseDowngaze {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 10px rgba(138, 180, 248, 0.5);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+    box-shadow: 0 0 25px rgba(138, 180, 248, 0.9);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 10px rgba(138, 180, 248, 0.5);
+    opacity: 0.7;
+  }
+}
+
+.eye-dot.downgaze {
+  display: block;
+  top: 85%;
+  animation: pulseDowngaze 5s ease-in-out infinite;
+}
+
+.posture-reminder {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--accent-blue);
+  font-weight: 500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.posture-reminder.active.upgaze {
+  opacity: 0.8;
+  top: 6%;
+}
+
+.posture-reminder.active.downgaze {
+  opacity: 0.8;
+  top: 93%;
+}
+
+@keyframes neckTilt {
+
+  0%,
+  50%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  15%,
+  35% {
+    transform: rotate(-35deg);
+  }
+
+  65%,
+  85% {
+    transform: rotate(35deg);
+  }
+}
+
+@keyframes torsoArmSwing {
+
+  0%,
+  50%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  15%,
+  35% {
+    transform: rotate(-55deg);
+  }
+
+  65%,
+  85% {
+    transform: rotate(55deg);
+  }
+}
+
+@keyframes torsoHeadShift {
+
+  0%,
+  50%,
+  100% {
+    transform: translateX(0px);
+  }
+
+  15%,
+  35% {
+    transform: translateX(-4px);
+  }
+
+  65%,
+  85% {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes marchingDash {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+
+.marching-dash {
+  animation: marchingDash 1s linear infinite;
+}
+
+@keyframes armRaiseL {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  30%,
+  70% {
+    transform: rotate(155deg);
+  }
+}
+
+@keyframes armRaiseR {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  30%,
+  70% {
+    transform: rotate(-155deg);
+  }
+}
+
+.anim-neck {
+  animation: neckTilt 6s ease-in-out infinite;
+}
+
+.figure-group.anim-torso .fig-arml {
+  animation: torsoArmSwing 6s ease-in-out infinite;
+}
+
+.figure-group.anim-torso .fig-armr {
+  animation: torsoArmSwing 6s ease-in-out infinite;
+}
+
+.figure-group.anim-torso .fig-head {
+  animation: torsoHeadShift 6s ease-in-out infinite;
+}
+
+.anim-reach {
+  animation: armRaiseL 6s ease-in-out infinite;
+}
+
+#fig-armr.anim-reach {
+  animation: armRaiseR 6s ease-in-out infinite;
+}
+
+.session-footer-info {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+}
+
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+  gap: 1.25rem;
+}
+
+.mood-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem 1.25rem;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mood-card-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+}
+
+.mood-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.mood-mapping {
+  font-size: 0.75rem;
+  color: var(--accent-blue);
+  opacity: 0.85;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.emoji {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.preset-card {
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+}
+
+.preset-name {
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+
+.play-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  transition: all 0.2s ease;
+}
+
+.mood-card:hover .play-arrow,
+.mood-card.active .play-arrow {
+  background: var(--accent-blue);
+  color: #202124;
+  transform: translateX(4px);
+}
+
+.mood-card:hover {
+  background: rgba(138, 180, 248, 0.08);
+  border-color: rgba(138, 180, 248, 0.4);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2), 0 0 20px rgba(138, 180, 248, 0.15);
+}
+
+.mood-card.active {
+  background: rgba(138, 180, 248, 0.15);
+  border-color: var(--accent-blue);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 0 15px rgba(138, 180, 248, 0.2);
+  transform: translateY(-2px);
+  color: var(--accent-blue);
+}
+
+/* Mobile Optimization */
+@media (max-width: 600px) {
+  #app {
+    padding: 1rem;
+    padding-top: 0.5rem;
+  }
+
+  .circle {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  .instruction-text {
+    top: auto !important;
+    bottom: 5vh !important;
+    font-size: 1.15rem !important;
+  }
+
+  .session-timer {
+    font-size: 3.5rem !important;
+  }
+
+  .mood-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .mood-card {
+    padding: 0.65rem 1rem;
+  }
+
+  .preset-card {
+    padding: 1rem 1.25rem;
+  }
+
+  .session-footer-info {
+    font-size: 0.75rem;
+  }
+}
+
+/* Daily Exercise Animations */
+.anim-jumping-jacks .fig-legl,
+.anim-jumping-jacks .fig-legr,
+.anim-wall-sit .fig-legl,
+.anim-wall-sit .fig-legr,
+.anim-pushups .fig-legl,
+.anim-pushups .fig-legr,
+.anim-crunches .fig-legl,
+.anim-crunches .fig-legr,
+.anim-step-ups .fig-legl,
+.anim-step-ups .fig-legr,
+.anim-squats .fig-legl,
+.anim-squats .fig-legr,
+.anim-triceps-dips .fig-legl,
+.anim-triceps-dips .fig-legr,
+.anim-plank .fig-legl,
+.anim-plank .fig-legr,
+.anim-high-knees .fig-legl,
+.anim-high-knees .fig-legr,
+.anim-lunges .fig-legl,
+.anim-lunges .fig-legr,
+.anim-pushup-rotation .fig-legl,
+.anim-pushup-rotation .fig-legr,
+.anim-side-plank .fig-legl,
+.anim-side-plank .fig-legr {
+  transform-origin: 50px 65px;
+}
+
+/* Jumping Jacks */
+@keyframes jj-arml {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(160deg);
+  }
+}
+
+@keyframes jj-armr {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(-160deg);
+  }
+}
+
+@keyframes jj-legl {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(30deg);
+  }
+}
+
+@keyframes jj-legr {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(-30deg);
+  }
+}
+
+.anim-jumping-jacks .fig-arml {
+  animation: jj-arml 1s infinite;
+}
+
+.anim-jumping-jacks .fig-armr {
+  animation: jj-armr 1s infinite;
+}
+
+.anim-jumping-jacks .fig-legl {
+  animation: jj-legl 1s infinite;
+}
+
+.anim-jumping-jacks .fig-legr {
+  animation: jj-legr 1s infinite;
+}
+
+/* Wall Sit */
+.anim-wall-sit {
+  transform: translateY(20px);
+}
+
+.anim-wall-sit .fig-legl,
+.anim-wall-sit .fig-legr {
+  transform: rotate(-90deg);
+}
+
+.anim-wall-sit .fig-arml,
+.anim-wall-sit .fig-armr {
+  transform: rotate(45deg);
+}
+
+/* Push-ups */
+@keyframes pushup-group {
+
+  0%,
+  100% {
+    transform: rotate(85deg) translateY(20px);
+  }
+
+  50% {
+    transform: rotate(95deg) translateY(45px);
+  }
+}
+
+@keyframes pushup-arml {
+
+  0%,
+  100% {
+    transform: rotate(-20deg);
+  }
+
+  50% {
+    transform: rotate(-80deg);
+  }
+}
+
+@keyframes pushup-armr {
+
+  0%,
+  100% {
+    transform: rotate(20deg);
+  }
+
+  50% {
+    transform: rotate(80deg);
+  }
+}
+
+.anim-pushups {
+  transform-origin: 50px 95px;
+  animation: pushup-group 2s infinite ease-in-out;
+}
+
+.anim-pushups .fig-arml {
+  animation: pushup-arml 2s infinite ease-in-out;
+}
+
+.anim-pushups .fig-armr {
+  animation: pushup-armr 2s infinite ease-in-out;
+}
+
+.anim-pushups .fig-legl,
+.anim-pushups .fig-legr {
+  transform: rotate(-5deg);
+}
+
+/* Crunches */
+@keyframes crunch-torso {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(-30deg);
+  }
+}
+
+@keyframes crunch-head {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(-40deg) translateY(-5px);
+  }
+}
+
+@keyframes crunch-arm {
+
+  0%,
+  100% {
+    transform: rotate(150deg);
+  }
+
+  50% {
+    transform: rotate(120deg);
+  }
+}
+
+.anim-crunches {
+  transform: translateY(20px) rotate(90deg);
+}
+
+.anim-crunches .fig-legl,
+.anim-crunches .fig-legr {
+  transform: rotate(-90deg);
+}
+
+.anim-crunches .fig-torso {
+  transform-origin: 50px 65px;
+  animation: crunch-torso 2s infinite ease-in-out;
+}
+
+.anim-crunches .fig-head {
+  transform-origin: 50px 65px;
+  animation: crunch-head 2s infinite ease-in-out;
+}
+
+.anim-crunches .fig-arml,
+.anim-crunches .fig-armr {
+  transform-origin: 50px 65px;
+  animation: crunch-arm 2s infinite ease-in-out;
+}
+
+/* Step-ups */
+@keyframes stepup-legl {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25%,
+  75% {
+    transform: rotate(-90deg);
+  }
+}
+
+@keyframes stepup-legr {
+
+  0%,
+  50%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  75% {
+    transform: rotate(-90deg);
+  }
+}
+
+.anim-step-ups .fig-legl {
+  animation: stepup-legl 2s infinite;
+}
+
+.anim-step-ups .fig-legr {
+  animation: stepup-legr 2s infinite;
+}
+
+/* Squats */
+@keyframes squat-group {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(20px);
+  }
+}
+
+@keyframes squat-leg {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(-60deg);
+  }
+}
+
+@keyframes squat-arm {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(90deg);
+  }
+}
+
+.anim-squats {
+  animation: squat-group 2s infinite;
+}
+
+.anim-squats .fig-legl,
+.anim-squats .fig-legr {
+  animation: squat-leg 2s infinite;
+}
+
+.anim-squats .fig-arml,
+.anim-squats .fig-armr {
+  animation: squat-arm 2s infinite;
+}
+
+/* Triceps Dips */
+@keyframes dip-group {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(15px);
+  }
+}
+
+@keyframes dip-arm {
+
+  0%,
+  100% {
+    transform: rotate(-135deg);
+  }
+
+  50% {
+    transform: rotate(-90deg);
+  }
+}
+
+.anim-triceps-dips {
+  animation: dip-group 2s infinite;
+}
+
+.anim-triceps-dips .fig-legl,
+.anim-triceps-dips .fig-legr {
+  transform: rotate(-90deg);
+}
+
+.anim-triceps-dips .fig-arml,
+.anim-triceps-dips .fig-armr {
+  animation: dip-arm 2s infinite;
+}
+
+/* Plank */
+.anim-plank {
+  transform: rotate(90deg) translateY(-20px);
+}
+
+.anim-plank .fig-arml,
+.anim-plank .fig-armr {
+  transform: rotate(-90deg);
+}
+
+/* High Knees */
+@keyframes highknee-legl {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(-90deg);
+  }
+}
+
+@keyframes highknee-legr {
+
+  0%,
+  50%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25%,
+  75% {
+    transform: rotate(-90deg);
+  }
+}
+
+.anim-high-knees .fig-legl {
+  animation: highknee-legl 1s infinite;
+}
+
+.anim-high-knees .fig-legr {
+  animation: highknee-legr 1s infinite;
+}
+
+/* Lunges */
+@keyframes lunge-group {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(15px);
+  }
+}
+
+@keyframes lunge-legl {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(-90deg);
+  }
+}
+
+@keyframes lunge-legr {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(45deg);
+  }
+}
+
+.anim-lunges {
+  animation: lunge-group 2s infinite;
+}
+
+.anim-lunges .fig-legl {
+  animation: lunge-legl 2s infinite;
+}
+
+.anim-lunges .fig-legr {
+  animation: lunge-legr 2s infinite;
+}
+
+/* Push-up Rotation */
+@keyframes pushuprot-group {
+
+  0%,
+  100% {
+    transform: rotate(90deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(60deg) translateY(10px);
+  }
+}
+
+.anim-pushup-rotation {
+  animation: pushuprot-group 3s infinite;
+}
+
+.anim-pushup-rotation .fig-arml {
+  transform: rotate(-45deg);
+}
+
+.anim-pushup-rotation .fig-armr {
+  animation: jj-armr 3s infinite;
+}
+
+/* Side Plank */
+.anim-side-plank {
+  transform: rotate(60deg) translateY(-10px);
+}
+
+.anim-side-plank .fig-arml {
+  transform: rotate(-90deg);
+}
+
+.anim-side-plank .fig-armr {
+  transform: rotate(180deg);
+}
+</style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -57,41 +1453,7 @@
               </svg></div>
           </button>
 
-          <button class="mood-card" data-preset="Rapid Eye Movement + Box-5">
-            <div class="mood-card-content"><span class="emoji">🌪️</span>
-              <div class="mood-text-group"><span>Angry / Ruminating</span><span class="mood-mapping">→ Rapid Eye
-                  Movement + Box-5</span></div>
-            </div>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
-          </button>
 
-          <button class="mood-card" data-preset="Energize + Upgaze">
-            <div class="mood-card-content"><span class="emoji">🚀</span>
-              <div class="mood-text-group"><span>Underconfident / Need a boost</span><span class="mood-mapping">→
-                  Energize + Upgaze</span></div>
-            </div>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
-          </button>
-
-          <button class="mood-card" data-preset="Coherence-5">
-            <div class="mood-card-content"><span class="emoji">🤯</span>
-              <div class="mood-text-group"><span>Overconfident / Scattered</span><span class="mood-mapping">→
-                  Coherence-5</span></div>
-            </div>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
-          </button>
 
           <button class="mood-card" data-preset="Calm">
             <div class="mood-card-content"><span class="emoji">🌬️</span>
@@ -116,17 +1478,7 @@
               </svg></div>
           </button>
 
-          <button class="mood-card" data-preset="Desk Mobility" style="border-color: rgba(52, 168, 83, 0.3);">
-            <div class="mood-card-content"><span class="emoji">🤸</span>
-              <div class="mood-text-group"><span>Sitting too long</span><span class="mood-mapping">→ Desk
-                  Mobility</span></div>
-            </div>
-            <div class="play-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg></div>
-          </button>
+
 
           <button class="mood-card" data-preset="7-Min Daily Exercise" style="border-color: rgba(234, 67, 53, 0.3);">
             <div class="mood-card-content"><span class="emoji">🔥</span>
